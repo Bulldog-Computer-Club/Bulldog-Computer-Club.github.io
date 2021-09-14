@@ -1,3 +1,10 @@
-# test
+---
+title: /
+layout: home
+permalink: /
+---
 
-this is a very nice and tasty test
+# Welcome to the SWC Programming Club!
+
+An inclusive community welcoming complete beginners and seasoned veterans alike!
+
