@@ -16,6 +16,8 @@ module.exports = {
 				docs: {
 					sidebarPath: require.resolve('./sidebars.js'),
 					editUrl: 'https://github.com/swc-programming-club/swc-programming-club.github.io/edit/main/',
+					remarkPlugins: [require('remark-math')],
+					rehypePlugins: [require('rehype-katex')],
 				},
 				blog: false,
 				theme: {
@@ -122,4 +124,12 @@ module.exports = {
 			theme: require('prism-react-renderer/themes/vsLight'),
 		},
 	},
+
+	stylesheets: [
+		{
+			href: 'https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css',
+			integrity: 'sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc',
+			crossorigin: 'anonymous',
+		},
+	],
 };
