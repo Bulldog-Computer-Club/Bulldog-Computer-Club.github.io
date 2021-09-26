@@ -1,6 +1,6 @@
 module.exports = {
 	title: 'SWC Programming Club',
-	tagline: 'An community of programmers of all skill levels working to help one another.',
+	tagline: 'A community of programmers of all skill levels working to help one another.',
 	url: 'https://swc-programming-club.github.io',
 	baseUrl: '/',
 	onBrokenLinks: 'throw',
