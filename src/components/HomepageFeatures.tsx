@@ -8,40 +8,43 @@ import React from 'react';
 import clsx from 'clsx';
 import styles from './HomepageFeatures.module.css';
 
-type FeatureItem = {
+interface FeatureItem {
 	title: string;
 	image: string;
 	description: JSX.Element;
-};
+}
 
 const FeatureList: FeatureItem[] = [
 	{
-		title: 'Easy to Use',
-		image: '/img/undraw_docusaurus_mountain.svg',
+		title: 'All skill levels welcome',
+		image: '/img/undraw_welcoming.svg',
 		description: (
 			<>
-				Docusaurus was designed from the ground up to be easily installed and used to get your website up and running
-				quickly.
+				Never written a single line of code before? <strong>You're welcome here.</strong>
+				<br />
+				<br />
+				Already familiar with a language and have some projects under your belt?{' '}
+				<strong>You've welcome here too.</strong>
 			</>
 		),
 	},
 	{
-		title: 'Focus on What Matters',
-		image: '/img/undraw_docusaurus_tree.svg',
+		title: 'Helpful community',
+		image: '/img/undraw_team_work.svg',
 		description: (
 			<>
-				Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go ahead and move your docs into the{' '}
-				<code>docs</code> directory.
+				Have a question? Feel free to ask on our community Discord, and there's a good chance someone there will be
+				happy to help!
 			</>
 		),
 	},
 	{
-		title: 'Powered by React',
-		image: '/img/undraw_docusaurus_react.svg',
+		title: 'As fun as you want it to be',
+		image: '/img/undraw_having_fun.svg',
 		description: (
 			<>
-				Extend or customize your website layout by reusing React. Docusaurus can be extended while reusing the same
-				header and footer.
+				This club isn't CS class - unless you want it to be! We teach what we think our members will find interesting
+				and are always open to adjusting based on feedback.
 			</>
 		),
 	},
