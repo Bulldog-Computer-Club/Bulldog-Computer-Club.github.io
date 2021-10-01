@@ -1,7 +1,7 @@
 {
-	"name": "swc-programming-club-website",
+	"name": "bulldog-computer-club-website",
 	"version": "1.0.0",
-	"description": "Website for the SWC programming club, powered by Docusaurus.",
+	"description": "Website for the Bulldog Computer Club, powered by Docusaurus.",
 	"main": "index.js",
 	"repository": "https://github.com/swc-programming-club/swc-programming-club.github.io",
 	"author": "jo3-l <https://github.com/jo3-l/>",

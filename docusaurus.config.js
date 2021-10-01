@@ -37,9 +37,9 @@ module.exports = {
 			},
 		},
 		navbar: {
-			title: 'SWC Programming Club',
+			title: 'Bulldog Computer Club',
 			logo: {
-				alt: 'SWC Programming Club Logo',
+				alt: 'Bulldog Computer Club Logo',
 				src: 'img/logo.svg',
 			},
 			items: [
