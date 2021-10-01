@@ -1,13 +1,13 @@
 module.exports = {
-	title: 'SWC Programming Club',
+	title: 'Bulldog Computer Club',
 	tagline: 'A community of programmers of all skill levels working to help one another.',
-	url: 'https://swc-programming-club.github.io',
+	url: 'https://bulldog-computer-club.github.io',
 	baseUrl: '/',
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'warn',
 	favicon: 'img/favicon.ico',
-	organizationName: 'swc-programming-club',
-	projectName: 'swc-programming-club.github.io',
+	organizationName: 'bulldog-computer-club',
+	projectName: 'bulldog-computer-club.github.io',
 	trailingSlash: false,
 	presets: [
 		[
@@ -15,7 +15,7 @@ module.exports = {
 			{
 				docs: {
 					sidebarPath: require.resolve('./sidebars.js'),
-					editUrl: 'https://github.com/swc-programming-club/swc-programming-club.github.io/edit/main/',
+					editUrl: 'https://github.com/bulldog-computer-club/bulldog-computer-club.github.io/edit/main/',
 					remarkPlugins: [require('remark-math')],
 					rehypePlugins: [require('rehype-katex')],
 				},
@@ -68,7 +68,7 @@ module.exports = {
 					label: 'Meetings',
 				},
 				{
-					href: 'https://github.com/swc-programming-club/',
+					href: 'https://github.com/bulldog-computer-club/',
 					label: 'GitHub',
 					position: 'right',
 				},
@@ -108,16 +108,16 @@ module.exports = {
 					items: [
 						{
 							label: 'GitHub Organization',
-							href: 'https://github.com/swc-programming-club',
+							href: 'https://github.com/bulldog-computer-club',
 						},
 						{
 							label: 'Website Repository',
-							href: 'https://github.com/swc-programming-club/swc-programming-club.github.io',
+							href: 'https://github.com/bulldog-computer-club/bulldog-computer-club.github.io',
 						},
 					],
 				},
 			],
-			copyright: `Copyright © ${new Date().getFullYear()} SWC Programming Community.`,
+			copyright: `Copyright © ${new Date().getFullYear()} Bulldog Computer Club.`,
 		},
 		prism: {
 			darkTheme: require('prism-react-renderer/themes/vsDark'),
