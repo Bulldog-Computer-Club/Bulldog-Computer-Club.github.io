@@ -63,7 +63,7 @@ module.exports = {
 				},
 				{
 					type: 'doc',
-					docId: 'meetings/introduction',
+					docId: 'meetings/information',
 					position: 'left',
 					label: 'Meetings',
 				},

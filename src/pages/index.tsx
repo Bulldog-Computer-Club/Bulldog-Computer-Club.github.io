@@ -17,8 +17,8 @@ function HomepageHeader() {
 					<Link className="button button--info" to="/docs/introduction">
 						Introduction
 					</Link>
-					<Link className="button button--secondary" to="/docs/meetings/introduction">
-						View transcripts of recent meetings
+					<Link className="button button--secondary" to="/docs/meetings/information">
+						Meetings
 					</Link>
 				</div>
 			</div>
