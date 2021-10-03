@@ -90,7 +90,7 @@ module.exports = {
 						},
 						{
 							label: 'Meetings',
-							to: '/docs/meetings/introduction',
+							to: '/docs/meetings/information',
 						},
 					],
 				},
