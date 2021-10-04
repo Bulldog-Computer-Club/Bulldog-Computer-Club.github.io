@@ -3,30 +3,9 @@ title: Introduction
 sidebar_position: 1
 ---
 
-Here is a _little_ bit of **code**:
+Welcome to the bulldog computer club wiki center! In the sidebar you can find a lot of useful pages and articles.
 
-```cpp
-#include <bits/stdc++.h>
 
-// Here's a random comment.
-using namespace std;
+## Contributing
 
-int main() {
-	int sum = 0, k = 0;
-	while (cin >> k) sum += k;
-	cout << sum << endl;
-	return 0;
-}
-```
-
-:::warning Uh oh!
-
-And here's a warning.
-
-:::
-
-And some `LaTeX`:
-
-$$
-A \cup B = \{ x : x \in A \lor x \in B \}
-$$
+If you would like to contribute to this wiki, please open a pull request [here](https://github.com/bulldog-computer-club/bulldog-computer-club.github.io)! We're very open to improvements.
