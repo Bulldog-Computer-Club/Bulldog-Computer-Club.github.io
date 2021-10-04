@@ -2,6 +2,11 @@
 title: Introduction
 sidebar_position: 1
 ---
+## Pre-Club Form for Beginners
+
+A Google form that will help us to understand your expectations of the club and be better prepared to help you with anything you might need
+
+* [Please fill out the form here!] (https://forms.gle/XafS8LSBfMaCGqsY9)
 
 ## External Resources
 
