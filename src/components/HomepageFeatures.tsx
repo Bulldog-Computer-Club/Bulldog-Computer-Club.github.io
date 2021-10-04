@@ -24,7 +24,7 @@ const FeatureList: FeatureItem[] = [
 				<br />
 				<br />
 				Already familiar with a language and have some projects under your belt?{' '}
-				<strong>You've welcome here too.</strong>
+				<strong>You're welcome here too.</strong>
 			</>
 		),
 	},
@@ -33,7 +33,7 @@ const FeatureList: FeatureItem[] = [
 		image: '/img/undraw_team_work.svg',
 		description: (
 			<>
-				Have a question? Feel free to ask on our community Discord, and there's a good chance someone there will be
+				Have a question? Feel free to ask on our community Discord or send a message on Teams, and there's a good chance someone there will be
 				happy to help!
 			</>
 		),
@@ -44,7 +44,7 @@ const FeatureList: FeatureItem[] = [
 		description: (
 			<>
 				This club isn't CS class - unless you want it to be! We teach what we think our members will find interesting
-				and are always open to adjusting based on feedback.
+				and are always open to adjusting based on feedback. Polls will be opened soon!
 			</>
 		),
 	},
