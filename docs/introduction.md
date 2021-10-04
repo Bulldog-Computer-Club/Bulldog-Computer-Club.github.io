@@ -3,7 +3,7 @@ title: Introduction
 sidebar_position: 1
 ---
 
-Here is a _little_ bit of **code** that eat dogs:
+Here is a _little_ bit of **code**:
 
 ```cpp
 #include <bits/stdc++.h>
