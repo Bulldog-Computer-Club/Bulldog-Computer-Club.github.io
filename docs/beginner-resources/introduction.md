@@ -1,5 +1,5 @@
 ---
-title: Introduction
+title: Welcome
 sidebar_position: 1
 ---
 ## Pre-Club Form for Beginners
