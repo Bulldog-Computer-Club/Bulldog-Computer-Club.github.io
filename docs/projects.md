@@ -19,6 +19,6 @@ A discord bot for the the bulldog computer discord server (we don't use this any
 
 :::info Want your project here?
 
-If you'd like your project to be posted in here, create an issue on the [website repository](https://github.com/bulldog-computer-club/bulldog-computer-club.github.io).
+If you'd like your project to be listed here, create an issue on the [website repository](https://github.com/bulldog-computer-club/bulldog-computer-club.github.io).
 
 :::
