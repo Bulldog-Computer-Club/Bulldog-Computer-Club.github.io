@@ -11,7 +11,7 @@ If you ever get stuck on something or need help resolving an issue, you can alwa
 :::
 
 :::warning
-While previous programming knowledge is not needed, 
+While previous programming knowledge is not needed, it's recommended that you understand some basic programming concepts (what are variables, what if statements are, what a function is).
 :::
 
 ## Planned content
