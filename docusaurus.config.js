@@ -51,15 +51,21 @@ module.exports = {
 				},
 				{
 					type: 'doc',
-					docId: 'beginner-resources/introduction',
+					docId: 'gamedev/introduction',
 					position: 'left',
-					label: 'Beginner Resources',
+					label: 'Gamedev',
 				},
 				{
 					type: 'doc',
-					docId: 'advanced-resources/introduction',
+					docId: 'linux/introduction',
 					position: 'left',
-					label: 'Advanced Resources',
+					label: 'Linux',
+				},
+				{
+					type: 'doc',
+					docId: 'ccc/introduction',
+					position: 'left',
+					label: 'CCC',
 				},
 				{
 					type: 'doc',
@@ -81,12 +87,16 @@ module.exports = {
 					title: 'Resources',
 					items: [
 						{
-							label: 'Beginner Resources',
-							to: '/docs/beginner-resources/introduction',
+							label: 'Gamedev',
+							to: '/docs/gamedev/introduction',
 						},
 						{
-							label: 'Advanced Resources',
-							to: '/docs/advanced-resources/introduction',
+							label: 'Linux',
+							to: '/docs/linux/introduction',
+						},
+						{
+							label: 'CCC',
+							to: '/docs/ccc/introduction',
 						},
 						{
 							label: 'Meetings',
