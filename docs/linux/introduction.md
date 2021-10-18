@@ -14,7 +14,11 @@ If you ever get stuck on something or need help resolving an issue, you can alwa
 While previous programming knowledge is not needed, it's recommended that you understand some basic programming concepts (what are variables, what if statements are, what a function is).
 :::
 
-## Planned content
+## Topic Outline
+
+Hi! I'm Andrei. I've been using Linux and similar operating systems for the past two years, so in this topic I want to casually explain and present different aspects of Linux and Unix-like operating systems. This topic is very different from the others, mostly focusing on computer history and general computer usage, although I will be organizing a significant "unit" that will contain very interesting programming concepts. This tutorial series is meant to guide completely inexperienced people from the basics of the command line to the usage of power user operating systems such as Arch Linux. I will try to post a tutorial discussing different aspects of Unix operating systems at least every two weeks.
+
+### Planned content
 
 - What is GNU/Linux?
   - What is the difference between Linux, Unix, and GNU?
