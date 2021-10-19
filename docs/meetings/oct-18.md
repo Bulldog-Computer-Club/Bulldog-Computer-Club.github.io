@@ -3,6 +3,12 @@ title: Oct 18 Meeting
 sidebar_position: 2
 ---
 
+:::note Slides
+
+Our slides for this meeting can be found [here](https://docs.google.com/presentation/d/1dWRDk80JZTT-nNqGqiMydNUqU0wCwOKf_zMUWh3Jz-w/edit?usp=sharing).
+
+:::
+
 ## You guys voted!
 
 1. Gamedev
