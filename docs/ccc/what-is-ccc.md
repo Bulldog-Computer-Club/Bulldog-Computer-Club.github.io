@@ -68,7 +68,7 @@ For the most part, knowledge of advanced language features has never been requir
 If you know two or more of the aforementioned languages, you should prefer using **C++ 14**, then **Java 8**, and finally **Python 3**.
 The main reason for this is performance. Being an AOT (ahead-of-time) compiled language, C++ is by far the fastest language of the 3, typically being several times faster than Java, which can itself be several _hundred_ times faster than Python (an interpreted language).
 
-To my knowledge, it is always possible to write AC solutions in C++. This guarantee does not hold for Java or Python. Thus, if you have the choice (or time), you should prefer to use C++. If you are doing both Junior and Senior challenges, try to something like Python for easier questions. The simpler syntax could save you some time!
+To my knowledge, it is always possible to write AC solutions in C++. This guarantee does not hold for Java or Python. Thus, if you have the choice (or time), you should prefer to use C++. If you are doing both Junior and Senior challenges, try to use something like Python (only if you are familiar with it!) for easier questions. The simpler syntax could save you some time!
 
 ## How can the content posted here help me?
 
