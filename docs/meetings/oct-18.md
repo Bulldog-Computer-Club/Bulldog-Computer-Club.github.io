@@ -15,11 +15,14 @@ Our slides for this meeting can be found [here](https://docs.google.com/presenta
 2. Linux
 3. CCC
 
-Starting from the next meeting (Oct 25), we will begin to learn about game development with Unity.
+Starting from the next meeting (Oct 25), we will begin to learn about game development with Unity, to install Unity, click [here] (https://unity3d.com/get-unity/download)
+  - Please choose the Student or Individual plan!
 
 Linux and CCC will remain online (in our Discord) for the moment.
 
-Around the end of winter break to CCC (usually February), we will practice CCC in person, and gamedev will be moved online.
+Around the end of winter break to CCC (usually on February), we will practice CCC in person, and gamedev will be moved online.
+
+We can also start on other or more topics if you guys will want that to happen
 
 ## GitHub
 
@@ -39,3 +42,4 @@ We have a few organizers of this club to introduce
 - Pranav
 - Liam
 - Aaron
+- Jerry
