@@ -41,6 +41,9 @@ In most years, the J5 question is similar in difficulty to the S2 question. Thus
 
 **If you are planning on participating in the Junior contest**, the main advice is to _practice, practice, and practice even more._ Generally speaking, J1-J4 are simple implementation questions (that is, if you read the question carefully you should be able to have an idea of how to answer it), so all you need to do is to practice your implementation skills. This requires a fair knowledge of your programming language.
 
+If you have just started practicing, it is fine if you are struggling with J3 and or J4 questions. In this case, try to find for solutions and understand the logic of solving
+the problem so you can improve with the given examples.
+
 J5 is more difficult, though practice will also help. Based on the previous years, it's very likely that J5 will be a graph theory problem (see, for example, [CCC 2020 J5](https://dmoj.ca/problem/ccc20s2), [CCC 2019 J5](https://dmoj.ca/problem/ccc19j5), and [CCC 2018 J5](https://dmoj.ca/problem/ccc18j5)). However, simple dynamic programming has also appeared in the past in addition to hard ad-hoc problems.
 
 **If you are planning on participating in the Senior contest**, again, practice doesn't hurt. However, knowing common techniques will also be very helpful: to be more specific, all the topics on the [IOI Syllabus](https://ioinformatics.org/files/ioi-syllabus-2019.pdf) have traditionally been fair game.
@@ -58,14 +61,14 @@ In any case, if you have time, it doesn't hurt to brush up on your Math; partici
 The big 3 languages that are permitted on the CCC are **Python 3**, **Java 8**, and **C++ 14**.
 
 If you know none of the languages on the list but still wish to participate, it would be prudent to begin learning the basics of programming in any of them.
-For the most part, knowledge of advanced language features has never been required and rarely results in a huge advantage. In most cases, a basic knowledge of syntax and standard library usage is all that is needed.
+For the most part, knowledge of advanced language features has never been required and rarely results in a huge advantage. In most cases, a basic knowledge of syntax and standard library usage is all that is needed. The thinking and implementing part is more important comparing to understand how to use a language.
 
 ### What language _should_ I use?
 
 If you know two or more of the aforementioned languages, you should prefer using **C++ 14**, then **Java 8**, and finally **Python 3**.
 The main reason for this is performance. Being an AOT (ahead-of-time) compiled language, C++ is by far the fastest language of the 3, typically being several times faster than Java, which can itself be several _hundred_ times faster than Python (an interpreted language).
 
-To my knowledge, it is always possible to write AC solutions in C++. This guarantee does not hold for Java or Python. Thus, if you have the choice (or time), you should prefer to use C++.
+To my knowledge, it is always possible to write AC solutions in C++. This guarantee does not hold for Java or Python. Thus, if you have the choice (or time), you should prefer to use C++. If you are doing both Junior and Senior challenges, try to something like Python for easier questions. The simpler syntax could save you some time!
 
 ## How can the content posted here help me?
 
