@@ -65,8 +65,6 @@ Joe initially has $5$ points. After the first competition, he scores the highest
 
 Joe initially has $3$ points. After the first competition, Joe is tied for first place, meaning he still gets his points doubled ($3 * 2 = 6$). The second competition, Joe doesn't win, but he gets $3$ participation points ($6 + 3 = 9$).
 
-<!--
-
 # Model Solution
 
 <details><summary>Click to reveal</summary>
@@ -117,5 +115,3 @@ In this case, we use it to succinctly parse the input scores, by splitting the i
 
 </p>
 </details>
-
--->
