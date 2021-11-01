@@ -16,7 +16,7 @@ The organizers would like to keep track of Joe’s points, but as they suck at m
 - The first line of input is an integer K denoting the initial number of points that the members have.
 - The second line of input is an integer N denoting the number of competitions held.
 - The next N lines contain several numbers which represent the scores that members received on a competition.
-- The first number is always the score that Chunky Cobra received.
+- The first number is always the score that Joe received.
 
 ### Output
 A single integer: Joe's points after all competitions have been held.
