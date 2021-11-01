@@ -8,7 +8,7 @@ Joe’s Doubling Points
 
 The Cooldog Programming Club is a club that hosts a programming competition each week. Each member of the Cooldog Programming Group starts out in the year with K points. Each week during their meeting, the Cooldog Programming Group organizes a competition, where members can gain points if they are the first to solve the question.
 
-More specifically, in a competition, the member(s) that receive the highest score have their points doubled and the runner up(s) will get 3 points.The points of all other members remain unchanged.
+More specifically, in a competition, the member(s) that receive the highest score have their points doubled and everyone else gets 3 participation points.
 
 The organizers would like to keep track of Joe’s points, but as they suck at math,, they have enlisted you to assist them.
 
@@ -59,4 +59,4 @@ Joe initially has 5 points. After the first competition, he scores the highest o
 
 **EXPLANATION:**
 
-Joe initially has 3 points. After the first competition, Joe is tied for first place, meaning he still gets his points doubled (3 * 2 = 6). The second competition, Joe is the runner up, meaning he gets 3 points (6 + 3 = 9).
+Joe initially has 3 points. After the first competition, Joe is tied for first place, meaning he still gets his points doubled (3 * 2 = 6). The second competition, Joe doesnt win, but he gets 3 participation points (6 + 3 = 9).
