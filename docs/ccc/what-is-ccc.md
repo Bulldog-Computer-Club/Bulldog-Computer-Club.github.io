@@ -1,6 +1,6 @@
 ---
 title: What is the CCC?
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 The CCC (**C**anadian **C**omputing **C**ompetition) is a computer science competition organized by the University of Waterloo, taking place sometime in February each year. You have 3 hours to complete 5 questions with increasing difficulty.

@@ -1,6 +1,6 @@
 ---
 title: Nov 1 Question
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Joe’s Doubling Points
