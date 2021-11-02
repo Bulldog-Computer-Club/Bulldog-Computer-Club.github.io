@@ -1,6 +1,6 @@
 ---
 title: Projects
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 Members of the Bulldog Computer Club have created some pretty impressive projects! In addition, we occasionally organize group projects we work on as a club. Here are some of those projects:

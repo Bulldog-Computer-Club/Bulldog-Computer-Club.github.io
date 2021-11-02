@@ -1,6 +1,6 @@
 ---
-title: Nov 1 Question
-sidebar_position: 3
+title: Joe's Doubling Points
+sidebar_position: 1
 ---
 
 # Joe’s Doubling Points
