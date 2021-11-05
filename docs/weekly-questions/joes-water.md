@@ -5,21 +5,27 @@ sidebar_position: 2
 
 # Joe’s Doubling Points
 
-Joe's Water Corporation is a company that sells bottled water. However, he has competition that also sells bottled water, sometimes at a cheaper price.
+Joe's Water Corporation is a company that sells bottled water. However, it has competition that also sells bottled water, sometimes at a cheaper price.
 
 If your price is lower, then you get to sell at that store. If not, you lose the chance to sell your water at that store. In the case of a tie, the competition always wins.
 
-You, as the manager of Joe's Water Corporation, can choose to lower the price of water for every single store by M dollars. You should print out 'YES' if it makes you more revenue, or 'NO' if it makes you less revenue. (revenue = sum of prices at stores sold)
+You, as the manager of Joe's Water Corporation, can choose to lower the price of water for every single store you own by $M$ dollars. This could lead to higher revenue (if the discount results in your water being sold at more stores) or lower revenue (if the lower prices outweigh the higher number of locations the water is sold in.) You should print out `YES` if it makes you more revenue, or `NO` if it makes you less revenue.
+
+:::note
+
+The revenue is defined as the sum of the prices at the stores at which your company sells water at a lower price than that of the competitor.
+
+::::
 
 ### Input
 
-- Int K All the prices at joe's store
-- Int N All the prices at the competition's store
-- Int M Price to be discounted by
+- On the first line, a list of integers delimited by spaces, representing the prices at your stores.
+- On the second line, a list of integers delimited by spaces, representing the prices at your competitor's stores.
+- On the third line, an integer $M$ indicating a discount you can apply to the prices at your own stores.
 
 ### Output
 
-A string either 'YES' or 'NO'
+Output a single string denoting whether applying the discount would result in higher profits: either `YES` or `NO`.
 
 # Examples
 
@@ -41,7 +47,11 @@ NO
 
 ### Explanation
 
-The 'X's mean the store cannot sell
+:::note
+
+`X`s indicate that you cannot sell at the given location, due to your prices being higher than that of the competitor's.
+
+:::
 
 ```
 3 X X 2 5 X = 10 total revenue
@@ -55,7 +65,7 @@ by reducing the price by $2$, we get
 X 2 2 X X X
 ```
 
-8 is smaller than 10 so we dont lower the price, and return 'NO'
+As $8 <= 10$, applying the discount results in lower profit overall. Thus, the output is `NO`.
 
 ## TODO
 
