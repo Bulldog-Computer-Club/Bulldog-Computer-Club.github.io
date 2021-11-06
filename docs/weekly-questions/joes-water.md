@@ -50,28 +50,69 @@ NO
 
 ### Explanation
 
-:::note
+Originally, in the $1^{st}$, $4^{th}$, and $5^{th}$ we have strictly lower prices than our competitor.
+Therefore our original profit is $3 + 2 + 5 = 10$ dollars.
 
-`X`s indicate that you cannot sell at the given location, due to your prices being higher than that of the competitor's.
-
-:::
+By reducing the price by $2$, we get the following prices:
 
 ```
-3 X X 2 5 X = 10 total revenue
+1 2 4 0 3 4
 4 2 2 3 6 5
 ```
 
-by reducing the price by $2$, we get
-
-```
-1 X X 0 3 4 = 8 total revenue
-X 2 2 X X X
-```
+In the $1^{st}$, $4^{th}$, $5^{th}$ and $6^{th}$ stores we have strictly lower prices than our competitor.
+Thus our profit after applying the discount is $1 + 0 + 3 + 4 = 8$ dollars.
 
 As $8 <= 10$, applying the discount results in lower profit overall. Thus, the output is `NO`.
 
-## TODO
+## Example 2
 
-- Add another example
-- Model Solution
-- Fix wording
+### Input
+
+```
+4 7 9 3
+5 5 9 2
+1
+```
+
+### Output
+
+```
+YES
+```
+
+### Explanation
+
+Our original profit is $4$ dollars, as we only have lower prices than our competitor in the $1^{st}$ store.
+
+By reducing the price by $1$, we get the following prices:
+
+```
+3 6 8 2
+5 5 9 2
+```
+
+We have lower prices than our competitor in the $1^{st}$ and $3^{rd}$ stores. Thus our profit after applying the discount is $3 + 2 = 5$ dollars.
+As $5 > 4$, the output is `YES`.
+
+## Example 3
+
+### Input
+
+```
+7
+5
+2
+```
+
+### Output
+
+```
+NO
+```
+
+### Explanation
+
+There is only one store, where we have a higher price than our competitor. Thus we make $0$ profit in the beginning.
+When we apply the discount, our price decreases to $5$. However, as our competitor wins in the case of a tie, we still make $0$ profit.
+Therefore, as our profit did not change, the output is `NO`.
