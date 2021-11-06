@@ -1,5 +1,5 @@
 ---
-title: Joe's Water Corperation
+title: Joe's Water Corporation
 sidebar_position: 2
 ---
 
@@ -15,7 +15,7 @@ You, as the manager of Joe's Water Corporation, can choose to lower the price of
 
 The revenue is defined as the sum of the prices at the stores at which your company sells water at a lower price than that of the competitor.
 
-::::
+:::
 
 ### Input
 
@@ -23,9 +23,12 @@ The revenue is defined as the sum of the prices at the stores at which your comp
 - On the second line, a list of integers delimited by spaces, representing the prices at your competitor's stores.
 - On the third line, an integer $M$ indicating a discount you can apply to the prices at your own stores.
 
+The number of stores is guaranteed to be the same.
+
 ### Output
 
 Output a single string denoting whether applying the discount would result in higher profits: either `YES` or `NO`.
+If the profit does not change, output `NO`.
 
 # Examples
 
