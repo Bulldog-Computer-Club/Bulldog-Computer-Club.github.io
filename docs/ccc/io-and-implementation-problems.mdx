@@ -1,0 +1,371 @@
+---
+title: I/O and implementation problems
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Though there are many different types of problems on the CCC, all of them have one thing in common - you read some input from standard input, solve the question based on the input, and output an answer to standard output.
+
+# Reading input
+
+How one reads from standard input differs between programming languages. Below, we outline the most common method to do so in the three most popular languages on the CCC.
+
+:::note
+
+The following methods are not meant to be the fastest ways of reading input.
+Rather, they are meant to be the most commonly used, simplest ways available.
+
+Thus, they might be insufficient for solving certain problems with very large input.
+We will discuss this problem in more detail in later articles (commonly referred to as "fast i/o").
+
+:::
+
+<Tabs>
+<TabItem value="py" label="Python" default>
+
+In Python 3, use the `input()` function to read from standard input.
+
+```py
+line = input()
+```
+
+As it returns a string, if you need an integer / float / etc. value, you will need to convert it manually:
+
+```py
+x = int(input())
+# Or:
+x = float(input())
+```
+
+The `input()` function will read text until it sees a newline, so if the input contains several items on a single line, you will need to process it.
+A common way of doing this is using the `str.split()` method, which will split the text based on a delimiter.
+
+For example, if we wanted to read some numbers inputted on a single line and delimited by whitespace, e.g. `1 2 3 4 5`, we could use the following:
+
+```py
+parts = input().split(" ")
+# parts = ["1", "2", "3", "4", "5"]
+```
+
+...or simply:
+
+```py
+parts = input().split() # If no argument is provided to str.split(), whitespace is used as the delimiter
+# parts = ["1", "2", "3", "4", "5"]
+```
+
+Note that `split()` will result in a list of strings. In this case, we might wish to work with a list of integers instead.
+We can do that by using the `map` function:
+
+```py
+ints = map(int, input().split())
+# parts = [1, 2, 3, 4, 5]
+```
+
+</TabItem>
+
+<TabItem value="java" label="Java">
+
+In Java, use `java.util.Scanner` to read from standard input.
+
+Start by instantiating a `Scanner`:
+
+```java
+Scanner scanner = new Scanner(System.in);
+```
+
+Then, you can use one of the `next*` methods to read values:
+
+```java
+int i = sc.nextInt();
+float f = sc.nextFloat();
+double d = sc.nextDouble();
+String line = sc.nextLine();
+// ...
+```
+
+</TabItem>
+
+<TabItem value="cpp" label="C++">
+
+In C++, use `std::cin` to read from standard input.
+
+```cpp
+int a;
+long double ld;
+long long ll;
+cin >> a >> ld >> ll;
+```
+
+The `>>` operator for `std::cin` is overloaded to support most types you can think of, so it will just work in most cases.
+
+Note that using `>>` with a string:
+
+```cpp
+string s;
+cin >> s;
+```
+
+...will only read up to the first whitespace character, which may be undesirable.
+That is, if the input was `hello world`, `s` would be `"hello"`, not `"hello world"`.
+
+If you want to read a whole line of input, use `getline`.
+
+```cpp
+string s;
+getline(cin, s); // s is now "hello world"
+```
+
+</TabItem>
+</Tabs>
+
+:::warning
+
+When solving problems, **do not** send a prompt for input unless it is explicitly stated that you should do so in the problem statement.
+This is because the CCC grader will **treat your prompt as output and therefore mark it as incorrect**.
+
+For example, say we are solving a problem which takes a single input, the age.
+
+**Correct**
+
+```py
+age = int(input())
+# ...
+```
+
+**Incorrect**
+
+```py
+age = int(input("What is your age?"))
+
+# Also wrong:
+print("What is your age?")
+age = int(input())
+```
+
+:::
+
+# Writing output
+
+Similarly, the way to output values differs between programming languages.
+
+<Tabs>
+<TabItem value="py" label="Python" default>
+
+In Python, use the `print` function to write to standard output:
+
+```py
+print("Hello world") // Hello world
+
+name = "Joe"
+print("Hello", name) // Hello Joe
+
+print(1, 2, 3) // 1 2 3
+```
+
+Note that `print` will add a newline to the end by default. To change this, provide a different value to the `end` parameter:
+
+```py
+print("Hello world", end='') // No newline
+```
+
+To print a sequence of items, map it into a sequence of strings and then use `str.join`:
+
+```py
+names = ["Vincent", "Andrei", "Joe"]
+print(" ".join(names)) # Vincent Andrei Joe
+
+xs = [1, 2, 3]
+print(" ".join(map(str, xs))) # 1 2 3
+```
+
+</TabItem>
+
+<TabItem value="java" label="Java">
+
+In Java, use `System.out` to write to standard output.
+
+In particular, to write to standard output with a trailing newline, use `System.out.println`.
+Otherwise, use `System.out.print`.
+
+```java
+System.out.println("hello world!"); // hello world!
+System.out.print(1); // 1, without a trailing newline
+```
+
+To print a sequence of items, map it into a sequence of strings and then use `String.join`:
+
+```java
+String[] names = {"Vincent", "Andrei", "Joe"};
+System.out.println(String.join(", ", names)); // Vincent, Andrei, Joe
+```
+
+</TabItem>
+
+<TabItem value="cpp" label="C++">
+
+In C++, use `std::cout` to write to standard output.
+
+```cpp
+cout << "Hello world" << '\n';
+```
+
+C++ will not add a trailing newline automatically; you will need to output it yourself if needed.
+
+:::note `std::endl`
+
+As a general rule, prefer to use `'\n'` instead of the `std::endl` I/O manipulator.
+This has to do with performance: `endl` flushes the stream which can slow down your program significantly if the output is large.
+Other than that, there is no difference between `'\n'` and `std::endl`.
+
+:::
+
+There are several ways to print out a list of items, but unless you can remember the various somewhat convoluted methods in a competition, the best way is likely to output it out yourself using a loop.
+
+```cpp
+vector<int> xs{1, 2, 3, 4};
+for (int i = 0; i < xs.size(); i++) {
+	if (i > 0) cout << ' ';
+	cout << xs[i];
+}
+cout << '\n';
+```
+
+:::warning Outputting floating point values
+
+When outputting floating point values, C++ might use scientific notation:
+
+```cpp
+double d = 1'000'000'000;
+cout << d << '\n'; // 1e+09
+```
+
+This is undesirable for the CCC, as most problems expect floating point values to be outputted using fixed point notation.
+That is, the above value should be outputted as `1000000000`.
+Thus, your otherwise correct solution might receive a WA!
+
+To force I/O streams to use fixed point notation, use the `fixed` I/O manipulator:
+
+```cpp
+double d = 1'000'000'000;
+cout << fixed << d << '\n'; // 1000000000
+```
+
+:::
+
+</TabItem>
+</Tabs>
+
+:::warning
+
+Can you spot the difference between these two texts?
+
+<!-- prettier-ignore -->
+```
+1 2 3 
+```
+
+```
+1 2 3
+```
+
+<details><summary>Click to reveal</summary>
+<p>
+
+The first text has a trailing space after the `3`.
+
+</p>
+</details>
+
+**Unless otherwise specified, output must be exact!**
+
+That is, outputting the first text instead of the second in the example given above would be marked incorrect.
+No matter how miniscule, unless otherwise noted, any difference between your output and the expected output results in a WA.
+Thus, make sure your output matches the requirements exactly. Some things to check for:
+
+- Are you outputting periods where you're not supposed to (or vice versa)?
+- Are you outputting strings in the wrong case (`Yes` instead of `yes`)?
+- Are you outputting an extra newline somewhere?
+
+:::
+
+# Implementation Problems
+
+If you know how to take input and write output, you're well on your way to solving **implementation problems**, which are typically the easiest type of question on the CCC.
+Generally speaking, J1-J4 and S1-S2 are implementation problems. That's 60/75 points for Junior and 30/75 for Senior!
+Due to this, though they might appear easy, it's important to still spend some time preparing for time.
+
+## What are implementation problems?
+
+Implementation problems are problems where there are two main challenges:
+
+- Understanding the problem
+- Converting your ideas into a working program
+
+Perhaps that sounds like programming in general, but note that what is _not_ mentioned is actually thinking of an idea as to how to solve the problem.
+In other words, once you understand the problem, you should have an idea as to how to solve it. This is not always the case for, e.g., J5s, where it can take considerable time
+to think of an approach.
+
+## Understanding the problem
+
+Understanding the problem can seem to be the easy part, but in reality it's harder than you might think.
+For example, though the problems presented last week were fairly easy code-wise, comprehending the problem was a road-block for many members.
+
+### Finding key phrases
+
+An important technique for understanding problem statements is **finding key phrases**. Often, problems have a bit of backstory, as was the case in our question.
+As interesting as the backstory is, most of it is rarely useful to solving the problem itself. As such, instead of reading the whole problem, what you should be doing
+is skimming and looking for key phrases.
+
+#### Example: Joe's Doubling Points
+
+[Link to problem](../weekly-questions/joes-doubling-points).
+
+There were two key phrases in this problem:
+
+> Each member of the Cooldog Programming Group starts out in the year with $K$ points.
+
+This phrase tells us that each member starts out with $K$ points. As Joe is one of the members, he must start with $K$ points as well.
+
+> More specifically, in a competition, the member(s) that receive the highest score have their points doubled and everyone else gets $3$ participation points.
+
+This phrase tells us how many points members get in a competition.
+
+---
+
+Based on these two phrases alone, we almost have enough information to solve the problem. There's one more thing we need to do, though.
+
+### Understand the input/output
+
+Understanding the input/output is another extremely important thing to do. Read through the input/output section of the problem statement carefully, as it is unlikely
+that there will be any filler content in this section.
+
+After that, look at the sample test cases and their explanations and ensure that your understanding of the problem matches the test cases.
+Consider going through some test cases on paper to make sure that this is the case.
+
+## Converting your idea into a working program
+
+Generally speaking after understanding the problem statement of an implementation problem you should have an idea in your head as to how to solve it.
+To convert your idea into code, you **absolutely need a good grasp on the programming language you are using.**
+
+For example, to solve Joe's Doubling Points, you needed to know how to use lists and the `max` function.
+
+_This requires self-study and practice. There is nothing more to it._
+
+## Sample Implementation Questions
+
+Below are some sample implementation questions for you to go through. It is recommended that you follow the technique outlined above when trying to solve them.
+
+- [Joe's Water](../weekly-questions/joes-water)
+- [CCC '21 J1 - Boiling Water](https://dmoj.ca/problem/ccc21j1)
+- [CCC '21 J2 - Silent Auction](https://dmoj.ca/problem/ccc21j2)
+- [CCC '19 J1 - Winning Score](https://dmoj.ca/problem/ccc19j1)
+- [CCC '19 J3 - Cold Compress](https://dmoj.ca/problem/ccc19j3)
+
+For more advanced members, we have also selected some harder implementation questions to go through.
+
+- [CCC '00 J1 - Calendar](https://dmoj.ca/problem/ccc00j1)
+- [CCC '00 S1 - Slot Machines](https://dmoj.ca/problem/ccc00s1)
+- [CCC '01 S1 - Keeping Score](https://dmoj.ca/problem/ccc01s1)

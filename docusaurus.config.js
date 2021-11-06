@@ -26,7 +26,6 @@ module.exports = {
 			},
 		],
 	],
-
 	themeConfig: {
 		colorMode: {
 			defaultMode: 'dark',
@@ -132,9 +131,9 @@ module.exports = {
 		prism: {
 			darkTheme: require('prism-react-renderer/themes/vsDark'),
 			theme: require('prism-react-renderer/themes/vsLight'),
+			additionalLanguages: ['java'],
 		},
 	},
-
 	stylesheets: [
 		{
 			href: 'https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css',
