@@ -13,13 +13,17 @@ Luckily, there's a solution -- _fast I/O_, which is, as the name suggests, a fas
 <Tabs>
 <TabItem value="py" label="Python" default>
 
-Instead of using `input()`, read directly from `sys.stdin`.
-
-One of the ways you can do this is to simply redefine `input` to refer to `sys.stdin.readline`.
+Instead of using `input()` and `print()`, read directly from `sys.stdin` and use `sys.stdout`.
 
 ```py
-input = sys.stdin.readline
-# Use input() as normal
+import sys
+	
+# sys.stdin.readline() returns an object, requiring us to stringify it.
+input = str(sys.stdin.readline())
+	
+# Prining out the input.
+sys.stdout.write(input)
+
 ```
 
 </TabItem>
