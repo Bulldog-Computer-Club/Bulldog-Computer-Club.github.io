@@ -1,0 +1,60 @@
+---
+title: Fast I/O
+sidebar_position: 4
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Certain CCC questions have fairly large amounts of input, which can cause an otherwise fast solution to become bogged down and time out simply reading all the input.
+
+Luckily, there's a solution -- _fast I/O_, which is, as the name suggests, a faster way of reading input and writing output than the "normal" way.
+
+<Tabs>
+<TabItem value="py" label="Python" default>
+
+Instead of using `input()`, read directly from `sys.stdin`.
+
+One of the ways you can do this is to simply redefine `input` to refer to `sys.stdin.readline`.
+
+```py
+input = sys.stdin.readline
+# Use input() as normal
+```
+
+</TabItem>
+
+<TabItem value="java" label="Java">
+
+Instead of using `java.util.Scanner`, use a `java.io.BufferedReader` combined with a `java.util.StringTokenizer`.
+
+```java
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+// Read an integer on one line
+int i = Integer.parseInt(br.readLine());
+
+// Read several integers on the same line
+StringTokenizer st = new StringTokenizer(br.readLine());
+while (st.hasMoreTokens()) {
+	int i = Integer.parseInt(st.nextToken());
+}
+```
+
+</TabItem>
+
+<TabItem value="cpp" label="C++">
+
+Using the C standard library functions `scanf` and `printf` instead of `std::cin` and `std::cout` is quite fast, but can be somewhat unwieldy and error-prone.
+
+To speed up `std::cin` and `std::cout`, add the following lines at the beginning of your code:
+
+```cpp
+ios_base::sync_with_stdio(false);
+cin.tie(nullptr);
+```
+
+Then, use `cin` and `cout` as usual.
+
+</TabItem>
+</Tabs>
