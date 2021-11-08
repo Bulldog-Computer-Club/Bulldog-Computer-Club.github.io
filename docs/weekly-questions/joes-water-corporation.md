@@ -3,22 +3,19 @@ title: Joe's Water Corporation
 sidebar_position: 2
 ---
 
-# Joe’s Water Corporation
+# Joe’s Doubling Points
 
-Joe's Water Corporation is a company that sells bottled water. However, it has competition that also sells bottled water, by the name of Eo's Dihydrogen Monoxide Syndicate.
+Joe's Water Corporation is a company that sells bottled water. However, it has competition that also sells bottled water, sometimes at a cheaper price.
 
-There are several stores that Joe's Water Corporation and Eo's Dihydrogen Monoxide Syndicate can sell their bottled water at.
-However, there is a catch -- only one company can sell bottled water at a given store.
+If your price is lower, then you get to sell at that store. If not, you lose the chance to sell your water at that store. In the case of a tie, the competition always wins.
 
-Both of the companies provide a price at which their bottled water will be sold for each of the stores.
-To adjust for local demand, the prices at each store may be different.
+You, as the manager of Joe's Water Corporation, can choose to lower the price of water for every single store you own by $M$ dollars. This could lead to higher revenue (if the discount results in your water being sold at more stores) or lower revenue (if the lower prices outweigh the higher number of locations the water is sold in.) You should print out `YES` if it makes you more revenue, or `NO` if it makes you less revenue / same revenue.
 
-As all the managers of the stores are quite stingy, they will always choose the company that sells water at a lower price.
-Moreover, as they think that Eo's Dihydrogen Monoxide Syndicate has a more epic name, they will choose Eo's Dihydrogen Monoxide Syndicate over Joe's Water Corporation if the prices are the same.
+:::note
 
-Your goal, as the manager of Joe's Water Corporation, is to maximize your revenue, which is defined as the sum of the prices at the stores where you sell water at a lower price than Eo's Dihydrogen Monoxide Syndicate.
+The revenue is defined as the sum of the prices at the stores at which your company sells water at a lower price than that of the competitor.
 
-To achieve this goal, you can choose to lower the price of water for every single store you own by $M$ dollars. This could lead to higher revenue (if the discount results in your water being sold at more stores) or lower revenue (if the lower prices outweigh the higher number of locations the water is sold in.) You should print out `YES` if it makes you more revenue, or `NO` if it makes you less revenue / same revenue.
+:::
 
 ### Input
 
