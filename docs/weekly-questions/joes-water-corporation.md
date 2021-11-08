@@ -117,15 +117,15 @@ There is only one store, where we have a higher price than our competitor. Thus 
 When we apply the discount, our price decreases to $5$. However, as our competitor wins in the case of a tie, we still make $0$ profit.
 Therefore, as our profit did not change, the output is `NO`.
 
-
+-->
 ## Model Solution 
 
 <details><summary>Click to reveal</summary>
 <p>
 
 ```py
-joes_prices = input().split(' ')
-competitions_prices = input().split(' ')
+joes_prices = map(int, input().split())
+competitors_prices = map(int, input().split())
 discount = int(input())
 
 original_profit = 0
@@ -153,8 +153,8 @@ discount = int(input())
     
 :::tip
 
-Since each number in a row of input is delimited by a single space, we can use `.split(' ')` to create a new list that separates all of them by spaces.
-
+If you are confused about how `map` is being used above, take a look at the model solution for [Joe's Doubling Points](joes-doubling-points#model-solution)!
+    
 :::
 
 ```py 
@@ -213,3 +213,4 @@ else:
 
 </p>
 </details>
+<!--
