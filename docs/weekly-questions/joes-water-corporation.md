@@ -190,7 +190,7 @@ The first conditional checks **whether or not Joe's price without the discount a
 is less than the competitor's price**; if so, it counts as profit made without the discount applied to `original_profit`. Then, **if the difference of Joe's price and the discount is lower than the competitor's price**, we'll count that towards the `discounted_profit`.
  
 ```py 
-print('YES' if discounted_profit > original_profit else 'NO')
+print("YES" if discounted_profit > original_profit else "NO")
 ```
 
 Finally, after we've compared their prices with and without Joe's discount applied,
