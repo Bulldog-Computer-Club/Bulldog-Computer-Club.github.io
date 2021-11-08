@@ -19,9 +19,9 @@ The revenue is defined as the sum of the prices at the stores at which your comp
 
 ### Input
 
-- On the first line, a list of integers delimited by spaces, representing the prices at your stores.
-- On the second line, a list of integers delimited by spaces, representing the prices at your competitor's stores.
-- On the third line, an integer $M$ indicating a discount you can apply to the prices at your own stores.
+- On the first line, a list of integers delimited by spaces, representing the prices you set for each store.
+- On the second line, a list of integers delimited by spaces, representing the prices the manager of Eo's Dihydrogen Monoxide Syndicate set for each store.
+- On the third line, an integer $M$ indicating a discount you can apply to all your prices.
 
 The number of stores is guaranteed to be the same.
 
@@ -50,7 +50,7 @@ NO
 
 ### Explanation
 
-Originally, in the $1^{st}$, $4^{th}$, and $5^{th}$ we have strictly lower prices than our competitor.
+Originally, in the $1^{st}$, $4^{th}$, and $5^{th}$ stores we have strictly lower prices than our competitor.
 Therefore our original profit is $3 + 2 + 5 = 10$ dollars.
 
 By reducing the price by $2$, we get the following prices:
