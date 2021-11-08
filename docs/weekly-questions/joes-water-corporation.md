@@ -117,7 +117,7 @@ There is only one store, where we have a higher price than our competitor. Thus 
 When we apply the discount, our price decreases to $5$. However, as our competitor wins in the case of a tie, we still make $0$ profit.
 Therefore, as our profit did not change, the output is `NO`.
 
--->
+<!--
 ## Model Solution 
 
 <details><summary>Click to reveal</summary>
@@ -213,4 +213,4 @@ else:
 
 </p>
 </details>
-<!--
+-->
