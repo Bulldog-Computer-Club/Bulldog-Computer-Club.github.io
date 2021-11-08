@@ -3,7 +3,7 @@ title: Joe's Water Corporation
 sidebar_position: 2
 ---
 
-# Joe’s Doubling Points
+# Joe’s Water Corporation
 
 Joe's Water Corporation is a company that sells bottled water. However, it has competition that also sells bottled water, sometimes at a cheaper price.
 
