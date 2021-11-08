@@ -145,8 +145,8 @@ print('YES' if discounted_profit > original_profit else 'NO')
 
 Let's begin by reading in the input.
 ```py
-joes_prices = input().split(' ')
-competitions_prices = input().split(' ')
+joes_prices = map(int, input().split())
+competitors_prices = map(int, input().split())
 discount = int(input())
 ```
     
