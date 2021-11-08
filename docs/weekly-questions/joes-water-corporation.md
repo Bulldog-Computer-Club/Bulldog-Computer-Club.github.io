@@ -132,8 +132,7 @@ discounted_profit = 0
 
 for i in range(len(joes_prices)):
     cur_joe_price = int(joes_prices[i])
-    cur_competitor_price = int(competitions_prices[i])
-    # These conditionals check for 
+    cur_competitor_price = int(competitions_prices[i]) 
     if cur_joe_price < cur_competitor_price:
         original_profit += cur_joe_price
     if cur_joe_price - discount < cur_competitor_price:
