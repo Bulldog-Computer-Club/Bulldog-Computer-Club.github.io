@@ -117,8 +117,8 @@ There is only one store, where we have a higher price than our competitor. Thus 
 When we apply the discount, our price decreases to $5$. However, as our competitor wins in the case of a tie, we still make $0$ profit.
 Therefore, as our profit did not change, the output is `NO`.
 
-<!--
-## Model Solution
+
+<!-- ## Model Solution
 
 <details><summary>Click to reveal</summary>
 <p>
@@ -242,4 +242,33 @@ print("YES" if after_discount_applied > original_profit else "NO")
 
 </p>
 </details>
--->
+
+
+
+## Model Solution 2
+
+<details><summary>Click to reveal</summary>
+<p>
+
+Here's a more cut-down-to-the-minimum solution that may be more readable for some of you:
+
+```py
+joesWater = input().split(' ')
+competitionsWater = input().split(' ')
+discount = int(input())
+
+originalProfit = 0
+discountedProfit = 0
+
+for i in range(len(joesWater)):
+    curJoeStore = int(joesWater[i])
+    curCompStore = int(competitionsWater[i])
+    if curJoeStore < curCompStore:
+        originalProfit += curJoeStore
+    if curJoeStore - discount < curCompStore:
+        discountedProfit += curJoeStore - discount
+
+print('YES') if discountedProfit > originalProfit else print('NO')
+```
+</p>
+</details> -->
