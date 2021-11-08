@@ -204,9 +204,9 @@ simple conditionals to be more concise or "elegant", if you're into that.
 Compare this to if we wrote it normally:
 ```
 if discounted_profit > original_profit:
-    print('YES')
+    print("YES")
 else:
-    print('NO')
+    print("NO")
 ```
     
 :::
