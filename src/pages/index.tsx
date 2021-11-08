@@ -19,7 +19,7 @@ function HomepageHeader() {
 					<Link className="button button--primary" to="/docs/meetings/information">
 						Past Meetings
 					</Link>
-					<Link className="button button--secondary button-lg" to="/docs/weekly-questions/joes-water-corporation">
+					<Link className="button button--secondary button-lg" to="/docs/weekly-questions/joes-water">
 						Check out the Weekly Question
 					</Link>
 				</div>
