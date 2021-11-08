@@ -198,7 +198,7 @@ we can see whether or not it made a difference.
 
 :::tip
     
-```if discounted_profit > original_profit else``` is a tenerary if statement, allowing
+```if discounted_profit > original_profit else``` is a ternary conditional statement, allowing
 simple conditionals to be more concise or "elegant", if you're into that.
 
 Compare this to if we wrote it normally:
