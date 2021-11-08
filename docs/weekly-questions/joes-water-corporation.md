@@ -118,157 +118,30 @@ When we apply the discount, our price decreases to $5$. However, as our competit
 Therefore, as our profit did not change, the output is `NO`.
 
 
-<!-- ## Model Solution
+<!-- 
+
+## Model Solution 
 
 <details><summary>Click to reveal</summary>
 <p>
 
 ```py
-def compute_total_profit(prices, competitors_prices):
-    return sum(
-        price
-        for price, competitors_price in zip(prices, competitors_prices)
-        if price < competitors_price
-    )
-
-prices = list(map(int, input().split()))
-competitors_prices = list(map(int, input().split()))
+joes_prices = input().split(' ')
+competitions_prices = input().split(' ')
 discount = int(input())
 
-original_profit = compute_total_profit(prices, competitors_prices)
-prices = [price - discount for price in prices]
-after_discount_applied = compute_total_profit(prices, competitors_prices)
+original_profit = 0
+discounted_profit = 0
 
-print("YES" if after_discount_applied > original_profit else "NO")
-```
+for i in range(len(joes_prices)):
+    cur_joe_price = int(joes_prices[i])
+    cur_competitor_price = int(competitions_prices[i])
+    if cur_joe_price < cur_competitor_price:
+        original_profit += cur_joe_price
+    if cur_joe_price - discount < cur_competitor_price:
+        discounted_profit += cur_joe_price - discount
 
-### Step-by-step tutorial
-
-Let's begin by reading in the input.
-
-```py
-prices = map(int, input().split())
-competitors_prices = map(int, input().split())
-discount = int(input())
-```
-
-:::tip
-
-If you are confused about how `map` is being used above, take a look at the model solution for [Joe's Doubling Points](joes-doubling-points#model-solution)!
-
-:::
-
-Now, we need to calculate the original profit.
-
-#### Calculating the profit
-
-We can sell our water at a store if our price is strictly less than that of the competitor.
-
-Based on this information we can write a procedure `compute_total_profit(prices, competitors_prices)` that calculates the total profit we can make given our prices and our competitors' prices:
-
-```py
-def compute_total_profit(prices, competitors_prices):
-	profit = 0
-	for i in range(len(prices)):
-		if prices[i] < competitors_prices[i]:
-			profit += prices[i]
-	return profit
-```
-
-:::tip
-
-We can write this more compactly using the `zip` built-in, which allows one to loop in parallel over several lists.
-For more information, take a look at [this article on `zip`](https://realpython.com/python-zip-function/) from Real Python.
-
-```py
-def compute_total_profit(prices, competitors_prices):
-	profit = 0
-	for price, competitors_price in zip(prices, competitors_prices):
-		if price < competitors_price:
-			profit += price
-	return profit
-```
-
-We can write this _even more compactly_ using the `sum` built-in and a generator comprehension.
-Again, for more explanation, refer to [this article on the aforementioned topic](https://realpython.com/list-comprehension-python/) from Real Python.
-
-```py
-def compute_total_profit(prices, competitors_prices):
-    return sum(
-        price
-        for price, competitors_price in zip(prices, competitors_prices)
-        if price < competitors_price
-    )
-```
-
-:::
-
----
-
-If `compute_total_profit` is properly defined, then we can simply write:
-
-```py
-original_profit = compute_total_profit(prices, competitors_prices)
-```
-
-Now we need to get the profit after the discount is applied. First, apply the discount:
-
-```py
-for i in range(len(prices)):
-	prices[i] -= discount
-```
-
-:::tip
-
-We can again write this more compactly using a list comprehension.
-
-```py
-prices = [price - discount for price in prices]
-```
-
-:::
-
-Now, we can compute the profit after the discount is applied.
-
-```py
-after_discount_applied = compute_total_profit(prices, competitors_prices)
-```
-
-Finally, we can use a conditional statement to output the answer.
-
-```py
-print("YES" if after_discount_applied > original_profit else "NO")
-```
-
-</p>
-</details>
-
-
-
-## Model Solution 2
-
-<details><summary>Click to reveal</summary>
-<p>
-
-Here's a more cut-down-to-the-minimum solution that may be more readable for some of you:
-
-```py
-joesWater = input().split(' ')
-competitionsWater = input().split(' ')
-discount = int(input())
-
-originalProfit = 0
-discountedProfit = 0
-
-for i in range(len(joesWater)):
-    curJoeStore = int(joesWater[i])
-    curCompStore = int(competitionsWater[i])
-    if curJoeStore < curCompStore:
-        originalProfit += curJoeStore
-    if curJoeStore - discount < curCompStore:
-        discountedProfit += curJoeStore - discount
-
-print('YES') if discountedProfit > originalProfit else print('NO')
+print('YES' if discounted_profit > original_profit else 'NO')
 ```
 </p>
 </details> -->
