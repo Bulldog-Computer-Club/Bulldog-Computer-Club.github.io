@@ -20,7 +20,7 @@ The revenue is defined as the sum of the prices at the stores at which your comp
 ### Input
 
 - On the first line, a list of integers delimited by spaces, representing the prices you set for each store.
-- On the second line, a list of integers delimited by spaces, representing the prices the manager of Eo's Dihydrogen Monoxide Syndicate set for each store.
+- On the second line, a list of integers delimited by spaces, representing the prices the competing company set for each store.
 - On the third line, an integer $M$ indicating a discount you can apply to all your prices.
 
 The number of stores is guaranteed to be the same.
