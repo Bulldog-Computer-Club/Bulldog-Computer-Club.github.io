@@ -148,7 +148,6 @@ joes_prices = map(int, input().split())
 competitors_prices = map(int, input().split())
 discount = int(input())
 ```
-    
 :::tip
 
 If you are confused about how `map` is being used above, take a look at the model solution for [Joe's Doubling Points](joes-doubling-points#model-solution)!
