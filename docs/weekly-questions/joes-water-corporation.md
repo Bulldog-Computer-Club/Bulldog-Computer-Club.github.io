@@ -123,8 +123,8 @@ Therefore, as our profit did not change, the output is `NO`.
 <p>
 
 ```py
-joes_prices = map(int, input().split())
-competitors_prices = map(int, input().split())
+joes_prices = list(map(int, input().split()))
+competitors_prices = list(map(int, input().split()))
 discount = int(input())
 
 original_profit = 0
@@ -132,7 +132,7 @@ discounted_profit = 0
 
 for i in range(len(joes_prices)):
     cur_joe_price = int(joes_prices[i])
-    cur_competitor_price = int(competitions_prices[i]) 
+    cur_competitor_price = int(competitors_prices[i]) 
     if cur_joe_price < cur_competitor_price:
         original_profit += cur_joe_price
     if cur_joe_price - discount < cur_competitor_price:
@@ -144,8 +144,8 @@ print('YES' if discounted_profit > original_profit else 'NO')
 
 Let's begin by reading in the input.
 ```py
-joes_prices = map(int, input().split())
-competitors_prices = map(int, input().split())
+joes_prices = list(map(int, input().split()))
+competitors_prices = list(map(int, input().split()))
 discount = int(input())
 ```
 :::tip
@@ -169,7 +169,7 @@ Here are the counts for the profit made without the discount applied and the pro
 ```py
 for i in range(len(joes_prices)):
     cur_joe_price = int(joes_prices[i])
-    cur_competitor_price = int(competitions_prices[i])
+    cur_competitor_price = int(competitors_prices[i]) 
 ```
 
 For each iteration, we'll need to store both Joe's and the competitor's price and
