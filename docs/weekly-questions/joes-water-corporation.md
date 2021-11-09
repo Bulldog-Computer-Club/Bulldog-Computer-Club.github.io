@@ -155,7 +155,7 @@ If you are confused about how `map` is being used above, take a look at the mode
 
 ```py 
 discount = int(input())
- ```
+```
 
 Since we need `discount` to make calculations, we'll need to parse it into an integer. 
 
