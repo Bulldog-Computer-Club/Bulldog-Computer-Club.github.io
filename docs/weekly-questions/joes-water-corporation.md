@@ -117,28 +117,29 @@ There is only one store, where we have a higher price than our competitor. Thus 
 When we apply the discount, our price decreases to $5$. However, as our competitor wins in the case of a tie, we still make $0$ profit.
 Therefore, as our profit did not change, the output is `NO`.
 
+<!--
 ## Model Solution
 
 <details><summary>Click to reveal</summary>
 <p>
 
 ```py
-joes_prices = map(int, input().split())
-competitors_prices = map(int, input().split())
+def compute_total_profit(prices, competitors_prices):
+    return sum(
+        price
+        for price, competitors_price in zip(prices, competitors_prices)
+        if price < competitors_price
+    )
+
+prices = list(map(int, input().split()))
+competitors_prices = list(map(int, input().split()))
 discount = int(input())
 
-original_profit = 0
-discounted_profit = 0
+original_profit = compute_total_profit(prices, competitors_prices)
+prices = [price - discount for price in prices]
+after_discount_applied = compute_total_profit(prices, competitors_prices)
 
-for i in range(len(joes_prices)):
-    cur_joe_price = int(joes_prices[i])
-    cur_competitor_price = int(competitions_prices[i])
-    if cur_joe_price < cur_competitor_price:
-        original_profit += cur_joe_price
-    if cur_joe_price - discount < cur_competitor_price:
-        discounted_profit += cur_joe_price - discount
-
-print('YES' if discounted_profit > original_profit else 'NO')
+print("YES" if after_discount_applied > original_profit else "NO")
 ```
 
 ### Step-by-step tutorial
@@ -146,7 +147,7 @@ print('YES' if discounted_profit > original_profit else 'NO')
 Let's begin by reading in the input.
 
 ```py
-joes_prices = map(int, input().split())
+prices = map(int, input().split())
 competitors_prices = map(int, input().split())
 discount = int(input())
 ```
@@ -157,62 +158,88 @@ If you are confused about how `map` is being used above, take a look at the mode
 
 :::
 
-```py
-discount = int(input())
-```
+Now, we need to calculate the original profit.
 
-Since we need `discount` to make calculations, we'll need to parse it into an integer.
+#### Calculating the profit
 
-```py
-original_profit = 0
-discounted_profit = 0
-```
+We can sell our water at a store if our price is strictly less than that of the competitor.
 
-Here are the counts for the profit made without the discount applied and the profit made with it applied.
-This will allow us to compare the original profit to the discounted profit once we're done our calculations.
+Based on this information we can write a procedure `compute_total_profit(prices, competitors_prices)` that calculates the total profit we can make given our prices and our competitors' prices:
 
 ```py
-for i in range(len(joes_prices)):
-    cur_joe_price = int(joes_prices[i])
-    cur_competitor_price = int(competitions_prices[i])
+def compute_total_profit(prices, competitors_prices):
+	profit = 0
+	for i in range(len(prices)):
+		if prices[i] < competitors_prices[i]:
+			profit += prices[i]
+	return profit
 ```
-
-For each iteration, we'll need to store both Joe's and the competitor's price and
-parse them into integers in order to make comparisons below:
-
-```py
-    if cur_joe_price < cur_competitor_price:
-        original_profit += cur_joe_price
-    if cur_joe_price - discount < cur_competitor_price:
-        discounted_profit += cur_joe_price - discount
-```
-
-The first conditional checks **whether or not Joe's price without the discount applied is less than the competitor's price**;
-if so, it counts as profit made without the discount applied to `original_profit`.
-Then, **if the difference of Joe's price and the discount is lower than the competitor's price**, we'll count that towards the `discounted_profit`.
-
-```py
-print("YES" if discounted_profit > original_profit else "NO")
-```
-
-Finally, after we've compared their prices with and without Joe's discount applied,
-we can see whether or not it made a difference.
 
 :::tip
 
-`true_val if condition else false_val` is a ternary conditional statement, allowing
-simple conditionals to be more concise or "elegant", if you're into that.
-
-Compare this to if we wrote it normally:
+We can write this more compactly using the `zip` built-in, which allows one to loop in parallel over several lists.
+For more information, take a look at [this article on `zip`](https://realpython.com/python-zip-function/) from Real Python.
 
 ```py
-if discounted_profit > original_profit:
-    print("YES")
-else:
-    print("NO")
+def compute_total_profit(prices, competitors_prices):
+	profit = 0
+	for price, competitors_price in zip(prices, competitors_prices):
+		if price < competitors_price:
+			profit += price
+	return profit
+```
+
+We can write this _even more compactly_ using the `sum` built-in and a generator comprehension.
+Again, for more explanation, refer to [this article on the aforementioned topic](https://realpython.com/list-comprehension-python/) from Real Python.
+
+```py
+def compute_total_profit(prices, competitors_prices):
+    return sum(
+        price
+        for price, competitors_price in zip(prices, competitors_prices)
+        if price < competitors_price
+    )
 ```
 
 :::
 
+---
+
+If `compute_total_profit` is properly defined, then we can simply write:
+
+```py
+original_profit = compute_total_profit(prices, competitors_prices)
+```
+
+Now we need to get the profit after the discount is applied. First, apply the discount:
+
+```py
+for i in range(len(prices)):
+	prices[i] -= discount
+```
+
+:::tip
+
+We can again write this more compactly using a list comprehension.
+
+```py
+prices = [price - discount for price in prices]
+```
+
+:::
+
+Now, we can compute the profit after the discount is applied.
+
+```py
+after_discount_applied = compute_total_profit(prices, competitors_prices)
+```
+
+Finally, we can use a conditional statement to output the answer.
+
+```py
+print("YES" if after_discount_applied > original_profit else "NO")
+```
+
 </p>
 </details>
+-->
