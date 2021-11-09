@@ -159,7 +159,7 @@ If you are confused about how `map` is being used above, take a look at the mode
 discount = int(input())
  ```
 
-Since we need `discount` to make calculations, we'll need to parse it into an integer. For everything else, we'll parse it later in the loop.
+Since we need `discount` to make calculations, we'll need to parse it into an integer. 
 
 ```py 
 original_profit = 0
@@ -196,7 +196,7 @@ we can see whether or not it made a difference.
 
 :::tip
     
-```if discounted_profit > original_profit else``` is a ternary conditional statement, allowing
+```true_val if condition else false_val`` is a ternary conditional statement, allowing
 simple conditionals to be more concise or "elegant", if you're into that.
 
 Compare this to if we wrote it normally:
