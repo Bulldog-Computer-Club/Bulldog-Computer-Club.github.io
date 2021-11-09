@@ -117,7 +117,7 @@ There is only one store, where we have a higher price than our competitor. Thus 
 When we apply the discount, our price decreases to $5$. However, as our competitor wins in the case of a tie, we still make $0$ profit.
 Therefore, as our profit did not change, the output is `NO`.
 
-## Model Solution 
+## Model Solution
 
 <details><summary>Click to reveal</summary>
 <p>
@@ -132,7 +132,7 @@ discounted_profit = 0
 
 for i in range(len(joes_prices)):
     cur_joe_price = int(joes_prices[i])
-    cur_competitor_price = int(competitions_prices[i]) 
+    cur_competitor_price = int(competitions_prices[i])
     if cur_joe_price < cur_competitor_price:
         original_profit += cur_joe_price
     if cur_joe_price - discount < cur_competitor_price:
@@ -140,31 +140,36 @@ for i in range(len(joes_prices)):
 
 print('YES' if discounted_profit > original_profit else 'NO')
 ```
+
 ### Step-by-step tutorial
 
 Let's begin by reading in the input.
+
 ```py
 joes_prices = map(int, input().split())
 competitors_prices = map(int, input().split())
 discount = int(input())
 ```
+
 :::tip
 
 If you are confused about how `map` is being used above, take a look at the model solution for [Joe's Doubling Points](joes-doubling-points#model-solution)!
+
 :::
 
-```py 
+```py
 discount = int(input())
 ```
 
-Since we need `discount` to make calculations, we'll need to parse it into an integer. 
+Since we need `discount` to make calculations, we'll need to parse it into an integer.
 
-```py 
+```py
 original_profit = 0
 discounted_profit = 0
 ```
 
-Here are the counts for the profit made without the discount applied and the profit made with it applied. This will allow us to compare the original profit to the discounted profit once we're done our calculations.
+Here are the counts for the profit made without the discount applied and the profit made with it applied.
+This will allow us to compare the original profit to the discounted profit once we're done our calculations.
 
 ```py
 for i in range(len(joes_prices)):
@@ -182,29 +187,31 @@ parse them into integers in order to make comparisons below:
         discounted_profit += cur_joe_price - discount
 ```
 
-The first conditional checks **whether or not Joe's price without the discount applied
-is less than the competitor's price**; if so, it counts as profit made without the discount applied to `original_profit`. Then, **if the difference of Joe's price and the discount is lower than the competitor's price**, we'll count that towards the `discounted_profit`.
- 
-```py 
+The first conditional checks **whether or not Joe's price without the discount applied is less than the competitor's price**;
+if so, it counts as profit made without the discount applied to `original_profit`.
+Then, **if the difference of Joe's price and the discount is lower than the competitor's price**, we'll count that towards the `discounted_profit`.
+
+```py
 print("YES" if discounted_profit > original_profit else "NO")
 ```
 
 Finally, after we've compared their prices with and without Joe's discount applied,
-we can see whether or not it made a difference. 
+we can see whether or not it made a difference.
 
 :::tip
-    
-```true_val if condition else false_val``` is a ternary conditional statement, allowing
+
+`true_val if condition else false_val` is a ternary conditional statement, allowing
 simple conditionals to be more concise or "elegant", if you're into that.
 
 Compare this to if we wrote it normally:
-```
+
+```py
 if discounted_profit > original_profit:
     print("YES")
 else:
     print("NO")
 ```
-    
+
 :::
 
 </p>
