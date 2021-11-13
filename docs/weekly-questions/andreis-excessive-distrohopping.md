@@ -11,7 +11,7 @@ Andrei's rating of a distro depends on two things: the number of key features th
 
 To determine the dankness of a distro's name, Andrei uses the following criteria, in order.
 
-1. If there are at least 3 repeating letters in the distro name, it is **very dank**, which increases the distro's rating by $3$ points.
+1. If there are at least 3 occurrences of the same letter in the distro name, it is **very dank**, which increases the distro's rating by $3$ points.
 2. If the distro name contains a digit (`0-9`), it is **somewhat dank**, which increases the distro's rating by $1$ point.
 3. Otherwise, it is **undank**, which decreases the distro's rating by $1$ point.
 
