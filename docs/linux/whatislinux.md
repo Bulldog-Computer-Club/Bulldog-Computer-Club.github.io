@@ -16,6 +16,19 @@ But GNU/Linux only includes enough of the system for a classic command line OS, 
 
 ## The history behind Linux and Unix
 
+To learn about how GNU/Linux came to be we must go all the way back to its roots, UNIX.
+
+GNU/Linux is a UNIX-like operating system, meaning it closely follows the design and philosophies of AT&T UNIX developed at Bell laboratories in the late 1960s and early 1970s by Dennis Ritchie and Ken Thompson. UNIX is to this day one of the most influencial pieces of software in computer history as it spurred a golden era of operating systems that lasted throughout the 90s and is still felt to this day. Eitherway, the original UNIX was proprietary, meaning its code was not visible to the public. 
+
+Below: Dennis Ritchie and Ken Thompson (sitting) working on UNIX on a PDP-11 (circa 1970)
+
+![Picture of UNIX developers](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Ken_Thompson_%28sitting%29_and_Dennis_Ritchie_at_PDP-11_%282876612463%29.jpg/1280px-Ken_Thompson_%28sitting%29_and_Dennis_Ritchie_at_PDP-11_%282876612463%29.jpg)
+
+It stayed that way, until a certain individual called [Richard Stallman](https://en.wikipedia.org/wiki/Richard_Stallman) that cared a lot about open source software founded the GNU project and the free software foundation, which aimed to create an open source version of the UNIX operating system. By 1990 volunteers all over the world nearly finished creating a completely open source operating system, with the exception of the kernel.
+
+Conveniently, [Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds) was already creating a kernel based on the Minix operating system since 1989, so GNU and Linus partenered up and created the GNU/Linux operating system.
+
+Today GNU/Linux is the most widely used operating system, used on 90% of the world's computers globally.
 
 ### Popular GNU/Linux distributions
 
@@ -53,3 +66,14 @@ Here are some other UNIX-like operating systems that are not Linux but are worth
 | OpenBSD  | An operating system focused on Minimalism and Security. My personal favorite OS ;) |
 | NetBSD   | An operating system focused on portability and being able to run on toasters |
 | FreeBSD  | A "kitchen sink" operating system |
+
+
+### To be continued...
+
+In the next post we will go over installing a GNU/Linux operating system called Debian.
+
+## References 
+
+* [https://web.archive.org/web/20171017151526/http://aptitude.alioth.debian.org/doc/en/pr01s02.html](https://web.archive.org/web/20171017151526/http://aptitude.alioth.debian.org/doc/en/pr01s02.html)
+* [https://www.gnu.org/gnu/gnu.html](https://www.gnu.org/gnu/gnu.html)
+* [https://unix.org/what_is_unix/history_timeline.html](https://unix.org/what_is_unix/history_timeline.html)
