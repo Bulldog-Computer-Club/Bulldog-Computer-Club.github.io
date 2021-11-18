@@ -34,38 +34,38 @@ Today GNU/Linux is the most widely used operating system, used on 90% of the wor
 
 Beginner distros are highlighted in bold. Distros that do not have a picture don't include a desktop environment (GUI) by default.
 
-| Distro       | Difficulty Level     | Notes |
-|--------------|----------------------|-------|
-| **Ubuntu** (including kubuntu, xubuntu, lubuntu)       | Beginner             | Huge amount of documentation available, easy to install non-free (proprietary) programs with the help of the snap store. Best software and hardware support. ![Image of an Ubuntu desktop](https://cdn.mos.cms.futurecdn.net/jrsZ9uSwU4sXYnkSCmxDSP.png)|
-| **KDE Neon**      | Beginner                     | Sleek and customizable, based on Ubuntu. Faster updates ![Image of a KDE Neon desktop](https://upload.wikimedia.org/wikipedia/commons/3/38/KDE_neon_5.22_with_KDE_Plasma_5.22.4-desktop_view.png) |
-| **OpenSuse**      | Beginner                     | Fast updates, stable, extremely customizable, easy to install. Includes a suit of GUI tools for managing system level settings that would usually require commandline knowledge. ![Unage of an OpenSUSE desktop](https://i.ytimg.com/vi/b2nF9k4_FOo/maxresdefault.jpg)|
-| Fedora      | Intermediate                     | Fast updates, stable. Sometimes difficult to install proprietary software. ![Image of a Fedora desktop](https://149366088.v2.pressablecdn.com/wp-content/uploads/2021/03/gnome-40-overview.jpg)|
-| Debian      | Intermediate                     | Very slow updates but minimal. Requires you to do some configuration yourself. |
-| Arch      | Advanced                     | Amazingly bleeding edge updates. Requires you to do most things manually using the command line. Huge amount of documentation hosted on [The Arch Wiki](https://wiki.archlinux.org/). Includes a lot of advanced tools that help in installing a variety of software. |
-| Void      | Advanced                     | Fast updates, stable. More minimal than other distributions.  |
-| Gentoo      | Expert                     | Source-based distribution that requires you to built your system completely from source, allowing for nearly infinite customization. Don't attempt installing this unless you are very familiar with Linux. |
+| Distro                                                 | Difficulty Level     | Notes                                                                                                                                                                                                                            |
+|--------------------------------------------------------|----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Ubuntu** (including kubuntu, xubuntu, lubuntu)       | Beginner             | Huge amount of documentation available, easy to install non-free (proprietary) programs with the help of the snap store. Best software and hardware support. ![Image of an Ubuntu desktop](https://cdn.mos.cms.futurecdn.net/jrsZ9uSwU4sXYnkSCmxDSP.png)              |
+| **KDE Neon**                                           | Beginner             | Sleek and customizable, based on Ubuntu. Faster updates ![Image of a KDE Neon desktop](https://upload.wikimedia.org/wikipedia/commons/3/38/KDE_neon_5.22_with_KDE_Plasma_5.22.4-desktop_view.png)                                                                     |
+| **OpenSuse**                                           | Beginner             | Fast updates, stable, extremely customizable, easy to install. Includes a suit of GUI tools for managing system level settings that would usually require commandline knowledge. ![Unage of an OpenSUSE desktop](https://i.ytimg.com/vi/b2nF9k4_FOo/maxresdefault.jpg)|
+| Fedora                                                 | Intermediate         | Fast updates, stable. Sometimes difficult to install proprietary software. ![Image of a Fedora desktop](https://149366088.v2.pressablecdn.com/wp-content/uploads/2021/03/gnome-40-overview.jpg)                                                                       |
+| Debian                                                 | Intermediate         | Very slow updates but minimal. Requires you to do some configuration yourself.                                                                                                                                                                                        |
+| Arch                                                   | Advanced             | Amazingly bleeding edge updates. Requires you to do most things manually using the command line. Huge amount of documentation hosted on [The Arch Wiki](https://wiki.archlinux.org/). Includes a lot of advanced tools that help in installing a variety of software. |
+| Void                                                   | Advanced             | Fast updates, stable. More minimal than other distributions.                                                                                                                                                                                                          |
+| Gentoo                                                 | Expert               | Source-based distribution that requires you to built your system completely from source, allowing for nearly infinite customization. Don't attempt installing this unless you are very familiar with Linux.                                                           |
 
 ### For the extra brave
 
 Here are some distributions that I definetly don't recommend to anyone but the most advanced users.
 
 
-| Distro       | Notes |
-|--------------|-------|
+| Distro       | Notes                                                                                                                                |
+|--------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | KISS Linux   | *Extremely* minimal and simple, the base system consisting of less than 20 packages and running on as little as 100 megabytes of ram |
-| CRUX         | Super minimalistic DIY distro |
-| NixOS        | An advanced operating system with a next-generation package manager |
+| CRUX         | Super minimalistic DIY distro                                                                                                        |
+| NixOS        | An advanced operating system with a next-generation package manager                                                                  |
 
 
 ### Other UNIXes
 
 Here are some other UNIX-like operating systems that are not Linux but are worth taking a look at
 
-| OS       | Notes |
-|----------|-------|
+| OS       | Notes                                                                              |
+|----------|------------------------------------------------------------------------------------|
 | OpenBSD  | An operating system focused on Minimalism and Security. My personal favorite OS ;) |
-| NetBSD   | An operating system focused on portability and being able to run on toasters |
-| FreeBSD  | A "kitchen sink" operating system |
+| NetBSD   | An operating system focused on portability and being able to run on toasters       |
+| FreeBSD  | A "kitchen sink" operating system                                                  |
 
 
 ### To be continued...
