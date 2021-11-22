@@ -82,3 +82,37 @@ kiss
 ### Explanation
 
 The $h$ turns into a $f$ which then turns into a $k$.
+
+## Example 3
+
+### Input
+
+```
+2
+c a
+b c
+b
+```
+
+### Output
+
+```
+a
+```
+
+## Example 4
+
+### Input
+
+```
+2
+a c
+b a
+bbbb
+```
+
+### Output
+
+```
+cccc
+```
