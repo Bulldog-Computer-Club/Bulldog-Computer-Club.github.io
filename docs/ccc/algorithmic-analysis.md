@@ -81,9 +81,9 @@ A way of finding the Big O of a program is to go through all the smaller parts o
 These three rules, when put together, cover a wide range of programs.
 The primary exception is recursive functions -- none of the rules can be applied to calls of recursive functions (indirect or otherwise).
 
-### "Adding up" Big-O's
+### Combining Big-Os
 
-Originally, we stated that to obtain the big O of a program, you add up the big Os of its constituent parts.
+Originally, we stated that to obtain the big O of a program, you combine the big Os of its constituent parts.
 Unfortunately that is a bit of a simplification:
 
 **Question:** What is the Big-O of the following program?
@@ -181,15 +181,15 @@ Similarly, if the input size is small (e.g. $n <= 10$), brute force (all subsets
 
 Below is a short table with different input sizes and possible time complexities. Note that this is not extremely exact -- treat it as a heuristic.
 
-| $n$             | Upper bound on time complexities |
-| --------------- | -------------------------------- |
-| $n <= 10$       | $O(n!)$                          |
-| $n <= 20$       | $O(2^n)$                         |
-| $n <= 400$      | $O(n^3)                          |
-| $n <= 5000$     | $O(n^2)$                         |
-| $n <= 5 \* 10^5 | $O(n \log n)$                    |
-| $n <= 5 * 10^6$ | $O(n)$                           |
-| Other           | $O(\log n)$, $O(1)$              |
+| $n$              | Upper bound on time complexities |
+| ---------------- | -------------------------------- |
+| $n <= 10$        | $O(n!)$                          |
+| $n <= 20$        | $O(2^n)$                         |
+| $n <= 400$       | $O(n^3)$                         |
+| $n <= 5000$      | $O(n^2)$                         |
+| $n <= 5 \* 10^5$ | $O(n \log n)$                    |
+| $n <= 5 * 10^6$  | $O(n)$                           |
+| Other            | $O(\log n)$, $O(1)$              |
 
 ## Exercises
 
