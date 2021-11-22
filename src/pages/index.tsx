@@ -21,7 +21,7 @@ function HomepageHeader() {
 					</Link>
 					<Link
 						className="button button--secondary button-lg"
-						to="/docs/weekly-questions/andreis-excessive-distrohopping"
+						to="/docs/weekly-questions/repeated-string-transformation"
 					>
 						Check out the Weekly Question
 					</Link>
