@@ -187,7 +187,7 @@ Below is a short table with different input sizes and possible time complexities
 | $n <= 20$        | $O(2^n)$                         |
 | $n <= 400$       | $O(n^3)$                         |
 | $n <= 5000$      | $O(n^2)$                         |
-| $n <= 5 \* 10^5$ | $O(n \log n)$                    |
+| $n <= 5 * 10^5$ | $O(n \log n)$                    |
 | $n <= 5 * 10^6$  | $O(n)$                           |
 | Other            | $O(\log n)$, $O(1)$              |
 
