@@ -159,8 +159,8 @@ Listed from fastest to slowest.
 
   Logarithms grow fairly slowly: assuming that the base of the logarithm is $2$, here are some examples with various input sizes:
 
-  - $n = 10$ => $log_2 8 \approx 3$ operations
-  - $n = 1000$ => $log_2 1024 \approx 10$ operations
+  - $n = 10$ => $log_2 10 \approx 3$ operations
+  - $n = 1000$ => $log_2 1000 \approx 10$ operations
   - $n = 1,000,000$ => $log_2 1,000,000 \approx 20$ operations
 
 - **Linear time $O(n)$:** Arguably the most common time complexity, showing up basically everywhere: for example, a loop over a list is $O(n)$.
@@ -187,7 +187,7 @@ Below is a short table with different input sizes and possible time complexities
 | $n <= 20$        | $O(2^n)$                         |
 | $n <= 400$       | $O(n^3)$                         |
 | $n <= 5000$      | $O(n^2)$                         |
-| $n <= 5 * 10^5$ | $O(n \log n)$                    |
+| $n <= 5 * 10^5$  | $O(n \log n)$                    |
 | $n <= 5 * 10^6$  | $O(n)$                           |
 | Other            | $O(\log n)$, $O(1)$              |
 
