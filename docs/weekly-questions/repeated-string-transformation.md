@@ -176,7 +176,7 @@ hiss
 ## Time Complexity
 
 About $O(|Z|tn)$ where $Z$ is the alphabet. Each iteration of the `while` loop attempts to apply all $t$ transformations on the string of length $n$. Thus the time complexity of each iteration is $O(tn)$.
-The number of iterations is probably correlated to the size of the alphabet, but I don't have a formal proof.
+Moreover, the number of iterations is bounded by the size of the alphabet $|Z|$. This can be proven by induction.
 
 </p>
 </details>
