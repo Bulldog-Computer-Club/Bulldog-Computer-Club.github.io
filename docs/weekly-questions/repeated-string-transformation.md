@@ -116,3 +116,209 @@ bbbb
 ```
 cccc
 ```
+
+# Model Solutions
+
+**Note:** Weak test data caused several unintended solutions (which should not have passed) to get through. (Those who solved the problem at our meeting will get points regardless of the correctness of their solution this week.) We apologize for the confusion!
+
+<details><summary>Solution 1: Brute Force</summary>
+<p>
+
+## Intuition
+
+Just do as the problem states: apply each transformation repeatedly in a loop, until none of the transformations have any effect.
+
+## Code
+
+```py
+t = int(input())
+transformations = []
+for _ in range(t):
+	a, b = input().split()
+	transformations.append((a, b))
+
+s = input()
+while True:
+	changed = False
+	for a, b in transformations:
+		replaced = s.replace(a, b)
+		if s != replaced:
+			changed = True
+		s = replaced
+	if not changed:
+		break
+print(s)
+```
+
+## Implementation Details
+
+`changed` keeps track of whether any transformation has resulted in the string changing in the current iteration. To replace the characters, we use [`str.replace`](https://docs.python.org/3/library/stdtypes.html#str.replace).
+
+## Example
+
+```
+2
+h f
+f k
+hiss
+```
+
+1. First iteration.
+   1. Apply the first transformation, $h \to f$, resulting in `fiss`.
+   2. Apply the second transformation, $f \to k$, resulting in `kiss`.
+   3. As the string changed, the loop continues.
+2. Second iteration.
+   1. Apply the first transformation, $h \to f$. No effect.
+   2. Apply the second transformation, $f \to k$. No effect.
+   3. As the string did not change, break the loop.
+3. Output `kiss`.
+
+## Time Complexity
+
+Approximately $O(tn)$. Each iteration of the `while` loop attempts to apply all $t$ transformations on the string of length $n$. Thus the time complexity of each iteration is $O(tn)$.
+The number of iterations is most likely constant due to the small alphabet size (all characters are guaranteed to be lowercase), but I don't have a formal proof.
+
+</p>
+</details>
+
+<details><summary>Solution 2: Hash Tables</summary>
+
+## Intuition
+
+The key insight here is to apply transformations character-by-character rather than on complete strings. That is, to obtain the transformed string for $S$, go through each character of $S$ and find the character that it resolves to rather than transforming all of $S$ at once.
+
+We can do this with a dictionary that maps a character $c$ to what character it resolves to. For example, given the following input:
+
+```
+5
+a b
+b c
+c d
+d e
+e f
+abcdefg
+```
+
+We would have the following dictionary:
+
+```py
+{
+	"a": "b",
+	"b": "c",
+	"c": "d",
+	"d": "e",
+	"e": "f",
+}
+```
+
+To look up what a character resolves to, it suffices to look it up in the dictionary repeatedly as long as there is an entry for it. For example, to resolve the character $a$, we perform the following steps:
+
+1. Check if there is an entry for $a$.
+   1. Yes; so set the current character to $b$ and continue.
+2. Check if there is an entry for $b$.
+   1. Yes; so set the current character to $c$ and continue.
+3. Check if there is an entry for $c$.
+   1. Yes; so set the current character to $d$ and continue.
+4. Check if there is an entry for $d$.
+   1. Yes; so set the current character to $e$ and continue.
+5. Check if there is an entry for $e$.
+   1. Yes; so set the current character to $f$ and continue.
+6. Check if there is an entry for $f$.
+   1. No; so stop here.
+
+This eventually resolves to $f$, which indicates that $a$ should become $f$ which is correct.
+
+## Code
+
+```py
+resolves_to = {}
+t = int(input())
+for _ in range(t):
+	a, b = input().split()
+	resolves_to[a] = b
+
+s = input()
+output = []
+for c in s:
+	while c in resolves_to:
+		c = resolves_to[c]
+	output.append(c)
+print("".join(output))
+```
+
+## Time Complexity
+
+$O(n)$. Consider the following loop:
+
+```py
+while c in resolves_to:
+	c = resolves_to[c]
+```
+
+At worst this runs $26$ times. Why? There are only 26 possible letters, so `resolves_to` can have at max $26$ keys. Moreover, there are guaranteed to not be any cycles.
+
+Therefore, each iteration runs in $O(1)$, and as there are $n$ iterations the overall time complexity is $O(n * 1) = O(n)$.
+
+</details>
+
+<details><summary>Solution 3: Disjoint-Set Union</summary>
+
+:::warning
+
+This solution is meant for members that are already familiar to a degree with graph theory.
+
+:::
+
+## Intuition
+
+We model the transformations as a directed acyclic graph, which leads to the following observation.
+
+**Key Observation:** Two characters $c_1$ and $c_2$ are in the same connected component iff the character that $c_1$ resolves to is the same as that of $c_2$.
+
+Consider the set of transformations $\{a \to b, b \to c, c \to d\}$.
+
+This translates to the following graph:
+
+$$
+a \to b \to c \to d
+$$
+
+There is one connected component which consists of $\{a, b, c, d\}$. Indeed, all characters in this set resolve to the same character: $d$.
+
+---
+
+If we then define the representative of a connected component as the character which does not transform to any other character (i.e. has an out-degree of $0$), then the problem
+is simplified to finding the representatives of the connected component of all characters which can be answered using a Disjoint-Set Union structure.
+
+## Code
+
+```py
+par = {}
+t = int(input())
+for _ in range(t):
+	a, b = input().split()
+	par[a] = b
+
+def find_set(c):
+	if c not in par:
+		return c
+	rep = find_set(par[c])
+	par[c] = rep
+	return rep
+
+print("".join(map(find_set, input())))
+```
+
+## Implementation Details
+
+`par[c]` is a lazily resolved dictionary mapping `c` to the representative of the connected component in which it is contained.
+
+`find_set` performs this resolution, and corresponds to the Find-Set operation on Disjoint-Set Unions. Path compression is applied as a further optimization.
+
+## Time Complexity
+
+$O(n)$. `find_set` runs in amortized $O(\alpha(t))$ time where $\alpha$ is the extremely slow-growing inverse Ackermann function, which is equivalent to $O(1)$ for our purposes. Since we call `find_set` for each character, the overall time complexity is then $O(n * 1) = O(n)$.
+
+Though asymptotically they have the same time complexity, in practice this code will be considerably faster than Solution 2 due to the path compression optimization.
+
+</details>
