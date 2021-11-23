@@ -255,10 +255,10 @@ while c in resolves_to:
 	c = resolves_to[c]
 ```
 
-At worst this runs $|Z|$ times.
 First, observe that as there are no loops, $c$ changes each iteration.
 $Z$ is the alphabet, there are $|Z|$ possible characters, so `resolves_to` can have at max $|Z|$ keys.
-Thus the loop has a maximum number of $|Z|$ iterations.
+In other words, there are only $|Z|$ possible values for $c$, and as $c$'s value changes each iteration,
+the number of iterations is bounded by $|Z|$.
 
 As there are $n$ iterations where $O(|Z|)$ work is being done in each, the overall time complexity is $O(|Z|n)$.
 
