@@ -175,8 +175,8 @@ hiss
 
 ## Time Complexity
 
-Approximately $O(tn)$. Each iteration of the `while` loop attempts to apply all $t$ transformations on the string of length $n$. Thus the time complexity of each iteration is $O(tn)$.
-The number of iterations is most likely constant due to the small alphabet size (all characters are guaranteed to be lowercase), but I don't have a formal proof.
+About $O(|Z|tn)$ where $Z$ is the alphabet. Each iteration of the `while` loop attempts to apply all $t$ transformations on the string of length $n$. Thus the time complexity of each iteration is $O(tn)$.
+The number of iterations is probably correlated to the size of the alphabet, but I don't have a formal proof.
 
 </p>
 </details>
@@ -248,77 +248,18 @@ print("".join(output))
 
 ## Time Complexity
 
-$O(n)$. Consider the following loop:
+$O(|Z|n)$. Consider the following loop:
 
 ```py
 while c in resolves_to:
 	c = resolves_to[c]
 ```
 
-At worst this runs $26$ times. Why? There are only 26 possible letters, so `resolves_to` can have at max $26$ keys. Moreover, there are guaranteed to not be any cycles.
+At worst this runs $|Z|$ times.
+First, observe that as there are no loops, $c$ changes each iteration.
+$Z$ is the alphabet, there are $|Z|$ possible characters, so `resolves_to` can have at max $|Z|$ keys.
+Thus the loop has a maximum number of $|Z|$ iterations.
 
-Therefore, each iteration runs in $O(1)$, and as there are $n$ iterations the overall time complexity is $O(n * 1) = O(n)$.
-
-</details>
-
-<details><summary>Solution 3: Disjoint-Set Union</summary>
-
-:::warning
-
-This solution is meant for members that are already familiar to a degree with graph theory.
-
-:::
-
-## Intuition
-
-We model the transformations as a directed acyclic graph, which leads to the following observation.
-
-**Key Observation:** Two characters $c_1$ and $c_2$ are in the same connected component iff the character that $c_1$ resolves to is the same as that of $c_2$.
-
-Consider the set of transformations $\{a \to b, b \to c, c \to d\}$.
-
-This translates to the following graph:
-
-$$
-a \to b \to c \to d
-$$
-
-There is one connected component which consists of $\{a, b, c, d\}$. Indeed, all characters in this set resolve to the same character: $d$.
-
----
-
-If we then define the representative of a connected component as the character which does not transform to any other character (i.e. has an out-degree of $0$), then the problem
-is simplified to finding the representatives of the connected component of all characters which can be answered using a Disjoint-Set Union structure.
-
-## Code
-
-```py
-par = {}
-t = int(input())
-for _ in range(t):
-	a, b = input().split()
-	par[a] = b
-
-def find_set(c):
-	if c not in par:
-		return c
-	rep = find_set(par[c])
-	par[c] = rep
-	return rep
-
-print("".join(map(find_set, input())))
-```
-
-## Implementation Details
-
-`par[c]` is a lazily resolved dictionary mapping `c` to the representative of the connected component in which it is contained.
-
-`find_set` performs this resolution, and corresponds to the Find-Set operation on Disjoint-Set Unions. Path compression is applied as a further optimization.
-
-## Time Complexity
-
-$O(n)$. `find_set` runs in amortized $O(\alpha(t))$ time where $\alpha$ is the extremely slow-growing inverse Ackermann function, which is equivalent to $O(1)$ for our purposes. Since we call `find_set` for each character, the overall time complexity is then $O(n * 1) = O(n)$.
-
-Though asymptotically they have the same time complexity, in practice this code will be considerably faster than Solution 2 due to the path compression optimization.
+As there are $n$ iterations where $O(|Z|)$ work is being done in each, the overall time complexity is $O(|Z|n)$.
 
 </details>
