@@ -81,7 +81,7 @@ BAD
 
 ### Explanation
 
-The first conference runs from minute $34$ to $41$. The second runs from minute $1$ to $2$. Finally, the third runs from $2$ to $35$. However, minute $2$ is reserved for the second conference.
+The first conference runs from minute $34$ to $41$. The second runs from minute $1$ to $3$. Finally, the third runs from $2$ to $35$. However, minute $2$ is reserved for the second conference.
 
 ## Example 4
 
