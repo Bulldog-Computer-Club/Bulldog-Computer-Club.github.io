@@ -21,7 +21,7 @@ function HomepageHeader() {
 					</Link>
 					<Link
 						className="button button--secondary button-lg"
-						to="/docs/weekly-questions/repeated-string-transformation"
+						to="/docs/weekly-questions/parent-teacher-conference-scheduling"
 					>
 						Check out the Weekly Question
 					</Link>
