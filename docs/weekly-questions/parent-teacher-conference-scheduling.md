@@ -155,3 +155,62 @@ GOOD
 BAD
 BAD
 ```
+
+# Model Solution
+
+<details><summary>Click to reveal</summary>
+<p>
+
+## Intuition
+
+We first consider a subproblem: given exactly two conferences taking place between $[a_1, b_1]$ and $[a_2, b_2]$, is there any overlap?
+For example, $[1, 5]$ and $[3, 6]$ overlap; $[2, 7]$ and $[8, 9]$ don't.
+
+This problem reduces to checking whether the intersection of the two intervals $[a_1, b_1]$ and $[a_2, b_2]$ is non-empty,
+which can be solved using a bit of simple math.
+
+(The method presented is not the only way to do it, but it is probably the shortest.)
+
+In particular, the intersection of two intervals $[a_1, b_1]$ and $[a_2, b_2]$ is given by:
+
+$$
+\max(\min(b_1, b_2) - \max(a_1, a_2) + 1, 0)
+$$
+
+For example, consider the example of $[1, 5]$ and $[3, 6]$. We plug in these values to the equation:
+
+$$
+\max(\min(b_1, b_2) - \max(a_1, a_2) + 1, 0)\\
+= \max(\min(5, 6) - \max(1, 3) + 1, 0)\\
+= \max(5 - 3 + 1, 0)\\
+= \max(3, 0)\\
+= 3
+$$
+
+...and $3$ is indeed the size of the intersection of $[1, 5]$ and $[3, 6]$, which is $[3, 5]$.
+
+---
+
+After solving this subproblem the larger problem becomes easy; all one needs to do is to maintain a list of all previously processed conference times.
+Upon receiving a new time, go through this list and see if any of them overlap. If so, it is bad; otherwise, it is good and should be marked as processed.
+
+## Code
+
+```py
+def cmp_intersection(i0, i1):
+	return max(min(i1[1], i0[1]) - max(i1[0], i0[0]) + 1, 0)
+
+processed = []
+n = int(input())
+for _ in range(n):
+	start, dur = map(int, input().split())
+	cur_time = (start, start + dur)
+	if any(cmp_intersection(prev_time, cur_time) > 0 for prev_time in processed):
+		print("BAD")
+	else:
+		print("GOOD")
+		processed.append(cur_time)
+```
+
+</p>
+</details>
