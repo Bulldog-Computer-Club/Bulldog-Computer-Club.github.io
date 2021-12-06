@@ -318,7 +318,7 @@ which move around.
 
 Here is a problem to mull over before next week's content.
 
-Given a list (not necessarily sorted) of integers $X$, compute the longest contiguous subsequence which is comprised of distinct elements.
+Given a list (not necessarily sorted) of integers $X$, compute the length of the longest contiguous subsequence which is comprised of distinct elements.
 
 ## Example
 
