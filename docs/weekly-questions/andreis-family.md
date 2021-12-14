@@ -81,3 +81,29 @@ Output one integer: Chungus' age (the **eldest child**.)
 ```
 5
 ```
+
+# Model Solution
+
+<details><summary>Click to reveal</summary>
+<p>
+
+Let Chungus' age be $C$. Then we have the following sequence of ages:
+
+$$
+V, J, C
+$$
+
+From the problem statement, this sequence is guaranteed to be an arithmetic series.
+By the definition of an arithmetic series, the pairwise difference is constant.
+Furthermore, since we have two adjacent elements, we can compute the pairwise difference, which is $J - V$.
+
+It follows that the desired value $C$ is equal to $J + J - V$.
+
+```py
+v = int(input())
+j = int(input())
+print(j + j - v)
+```
+
+</p>
+</details>

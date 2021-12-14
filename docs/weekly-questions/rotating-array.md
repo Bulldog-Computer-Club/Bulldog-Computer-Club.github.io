@@ -164,3 +164,92 @@ Thus it is rotated $180$ degrees in the end.
 
 If you are finding that your solution is taking a long time to run, you need to optimize your code.
 The optimal solution for this problem outputs the answer for this test case instantly.
+
+# Model Solution
+
+<details><summary>Click to reveal</summary>
+<p>
+
+We begin by considering how to apply a $90\degree$ clockwise rotation to a matrix.
+
+When dealing with transformations on matrices, it is often good to begin by considering an example matrix and seeing where different elements go:
+
+$$
+  \left[ {\begin{array}{cc}
+    1 & 2 & 3 \\
+    4 & 5 & 6 \\
+    7 & 8 & 9 \\
+  \end{array} } \right]
+$$
+
+After rotating the above matrix $90\degree$ clockwise, we obtain:
+
+$$
+  \left[ {\begin{array}{cc}
+    7 & 4 & 1 \\
+    8 & 5 & 2 \\
+    9 & 6 & 3 \\
+  \end{array} } \right]
+$$
+
+Immediately, some patterns should become obvious just from looking at this.
+In particular, we see that the first row has became the last column, the second row the second column, and the third row the first column.
+
+Based on this insight, it is trivial to write a procedure that rotates an input matrix $90\degree$ clockwise:
+
+```py
+def rot90(matrix):
+    m, n = len(matrix), len(matrix[0])
+    rot = [[0] * m for _ in range(n)]
+    for i in range(m):
+        for j in range(n):
+            rot[j][-i - 1] = matrix[i][j]
+    return rot
+```
+
+**Lemma 1:** An arbitrary rotation on a matrix can be equivalently expressed as a repeated application of a $90\degree$ clockwise rotation.
+
+**Proof:** The proof for this is trivial. Below we provide two representative examples:
+
+- A clockwise rotation of $180\degree$ is equivalent to two $90\degree$ clockwise rotations.
+- A counterclockwise rotation of $90\degree$ is equivalent to a clockwise rotation of $270\degree$ and is therefore equivalent to three $90\degree$ clockwise rotations.
+
+---
+
+**Lemma 2:** Rotating a matrix by $N\degree$ is equivalent to rotating it by $(N \mod 360)\degree$.
+
+**Proof:** Trivial. An intuitive explanation is that rotating the matrix $360\degree$ has no effect, and thus any full rotations can be discarded.
+
+---
+
+Putting together this information we obtain the following solution:
+
+```py
+def rot90(matrix):
+    m, n = len(matrix), len(matrix[0])
+    rot = [[0] * m for _ in range(n)]
+    for i in range(m):
+        for j in range(n):
+            rot[j][-i - 1] = matrix[i][j]
+    return rot
+
+n, m = map(int, input().split())
+matrix = [list(map(int, input().split())) for _ in range(m)]
+k = int(input())
+total_rots = 0
+for _ in range(k):
+    deg, typ = input().split()
+    rots = (int(deg) // 90) % 360
+    if typ == "ccw":
+        rots = 4 - rots # 1 rotation counterclockwise = 3 rotations clockwise, and so on
+    total_rots = (total_rots + rots) % 4
+
+for _ in range(total_rots):
+    matrix = rot90(matrix)
+print("\n".join(" ".join(map(str, row)) for row in matrix))
+```
+
+**Time Complexity:** $O(K + NM)$ -- we process each rotation in $O(1)$ by deferring the actual rotations until the end. Since we operate on rotations modulo $4$, there are at most $3$ rotations to apply leading to $O(NM)$ work performing the actual rotations at the end.
+
+</p>
+</details>
