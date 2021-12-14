@@ -239,7 +239,7 @@ k = int(input())
 total_rots = 0
 for _ in range(k):
     deg, typ = input().split()
-    rots = (int(deg) // 90) % 360
+    rots = (int(deg) % 360) // 90
     if typ == "ccw":
         rots = 4 - rots # 1 rotation counterclockwise = 3 rotations clockwise, and so on
     total_rots = (total_rots + rots) % 4
