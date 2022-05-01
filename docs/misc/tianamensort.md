@@ -5,7 +5,7 @@ sidebar_position: 1
 
 ## Dont you just think mergeSort and quickSort are too slow?
 
-[Stalin sort](https://github.com/gustavo-depaula/stalin-sort), currently the worlds fastest sort, is a sort that runs in O(n) time compared to O(logn) used by quickSort and mergeSort. Thus, I have invented a new algorythem that sorts any array in O(1) time!
+[Stalin sort](https://github.com/gustavo-depaula/stalin-sort), currently the worlds fastest sort, is a sort that runs in O(n) time compared to O(logn) used by quickSort and mergeSort. Thus, I have invented a new algorithm that sorts any array in O(1) time!
 <br></br>
 
 **My Solution**
