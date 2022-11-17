@@ -52,7 +52,7 @@ module.exports = {
 				},
 				{
 					href: 'https://github.com/bulldog-computer-club/',
-					label: 'GitHub',
+					className: 'header-github-link',
 					position: 'right',
 				},
 			],
