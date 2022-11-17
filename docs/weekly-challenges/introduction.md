@@ -1,5 +1,5 @@
 ---
-title: November 18th Challenge
+title: Introduction
 sidebar_position: 1
 ---
 

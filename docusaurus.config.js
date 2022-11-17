@@ -65,7 +65,7 @@ module.exports = {
 					items: [
 						{
 							label: 'Python',
-							to: '/docs/python',
+							to: '/docs/python/introduction',
 						},
 						{
 							label: 'CCC',
@@ -73,7 +73,7 @@ module.exports = {
 						},
 						{
 							label: 'Weekly Challenges',
-							to: '/docs/weekly-challenges',
+							to: '/docs/weekly-challenges/introduction',
 						},
 					],
 				},
