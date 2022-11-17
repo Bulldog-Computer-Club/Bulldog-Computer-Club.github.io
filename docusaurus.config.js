@@ -72,8 +72,8 @@ module.exports = {
 							to: '/docs/ccc/introduction',
 						},
 						{
-							label: 'Challenges',
-							to: '/docs/challenges',
+							label: 'Weekly Challenges',
+							to: '/docs/weekly-challenges',
 						},
 					],
 				},
