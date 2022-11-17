@@ -1,6 +1,6 @@
 module.exports = {
 	title: 'Bulldog Computer Club',
-	tagline: 'A chill club for everything programming related',
+	tagline: 'The premier club for everything related to computer science at Churchill',
 	url: 'https://bulldog-computer-club.github.io',
 	baseUrl: '/',
 	onBrokenLinks: 'throw',

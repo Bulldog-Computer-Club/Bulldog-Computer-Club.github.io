@@ -4,8 +4,8 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import React from 'react';
 import clsx from 'clsx';
+import React from 'react';
 import styles from './HomepageFeatures.module.css';
 
 interface FeatureItem {
@@ -20,11 +20,14 @@ const FeatureList: FeatureItem[] = [
 		image: '/img/undraw_welcoming.svg',
 		description: (
 			<>
-				Never written a single line of code before? <strong>You're welcome here.</strong>
-				<br />
-				<br />
-				Already familiar with a language and have some projects under your belt?{' '}
-				<strong>You're welcome here too.</strong>
+				<p>
+					Never written a single line of code before? <strong>You're welcome here.</strong>
+				</p>
+
+				<p>
+					Already familiar with a language and have some projects under your belt?{' '}
+					<strong>You're welcome here too.</strong>
+				</p>
 			</>
 		),
 	},
@@ -33,8 +36,8 @@ const FeatureList: FeatureItem[] = [
 		image: '/img/undraw_team_work.svg',
 		description: (
 			<>
-				Have a question? Feel free to ask on our community Discord or send a message on Teams, and there's a good chance someone there will be
-				happy to help!
+				Have a question? Feel free to ask during one of our meetings or on Teams; one of our club leaders or members
+				will be happy to help!
 			</>
 		),
 	},
@@ -43,8 +46,8 @@ const FeatureList: FeatureItem[] = [
 		image: '/img/undraw_having_fun.svg',
 		description: (
 			<>
-				This club isn't CS class - unless you want it to be! We teach what we think our members will find interesting
-				and are always open to adjusting based on feedback. Polls will be opened soon!
+				We discuss topics we think you — our members — will find interesting and are always open to adjusting based on
+				feedback. Please feel free to contact us on Teams or through email if you have any suggestions.
 			</>
 		),
 	},
