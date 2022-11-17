@@ -16,8 +16,8 @@ module.exports = {
 				docs: {
 					sidebarPath: require.resolve('./sidebars.js'),
 					editUrl: 'https://github.com/bulldog-computer-club/bulldog-computer-club.github.io/edit/main/',
-					remarkPlugins: [require('remark-math')],
-					rehypePlugins: [require('rehype-katex')],
+					remarkPlugins: [import('remark-math')],
+					rehypePlugins: [import('rehype-katex')],
 				},
 				blog: false,
 				theme: {
@@ -30,10 +30,6 @@ module.exports = {
 		colorMode: {
 			defaultMode: 'dark',
 			respectPrefersColorScheme: true,
-			switchConfig: {
-				darkIcon: '🌙',
-				lightIcon: '☀️',
-			},
 		},
 		navbar: {
 			title: 'Bulldog Computer Club',
