@@ -70,10 +70,6 @@ module.exports = {
 					],
 				},
 				{
-					title: 'Community',
-					items: [],
-				},
-				{
 					title: 'More',
 					items: [
 						{
