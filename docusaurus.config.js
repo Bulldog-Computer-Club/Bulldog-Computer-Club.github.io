@@ -50,27 +50,9 @@ module.exports = {
 				},
 				{
 					type: 'doc',
-					docId: 'gamedev/introduction',
-					position: 'left',
-					label: 'Gamedev',
-				},
-				{
-					type: 'doc',
-					docId: 'linux/introduction',
-					position: 'left',
-					label: 'Linux',
-				},
-				{
-					type: 'doc',
 					docId: 'ccc/introduction',
 					position: 'left',
 					label: 'CCC',
-				},
-				{
-					type: 'doc',
-					docId: 'meetings/information',
-					position: 'left',
-					label: 'Meetings',
 				},
 				{
 					href: 'https://github.com/bulldog-computer-club/',
@@ -86,31 +68,14 @@ module.exports = {
 					title: 'Resources',
 					items: [
 						{
-							label: 'Gamedev',
-							to: '/docs/gamedev/introduction',
-						},
-						{
-							label: 'Linux',
-							to: '/docs/linux/introduction',
-						},
-						{
 							label: 'CCC',
 							to: '/docs/ccc/introduction',
-						},
-						{
-							label: 'Meetings',
-							to: '/docs/meetings/information',
 						},
 					],
 				},
 				{
 					title: 'Community',
-					items: [
-						{
-							label: 'Discord',
-							href: 'https://discord.gg/qEp5jFYV',
-						},
-					],
+					items: [],
 				},
 				{
 					title: 'More',

@@ -16,13 +16,7 @@ function HomepageHeader() {
 					<p className="hero__subtitle">{siteConfig.tagline}</p>
 				</div>
 				<div className={styles.buttons}>
-					<Link className="button button--primary" to="/docs/meetings/information">
-						Past Meetings
-					</Link>
-					<Link
-						className="button button--secondary button-lg"
-						to="/docs/weekly-questions/parent-teacher-conference-scheduling"
-					>
+					<Link className="button button--secondary button-lg" to="/docs/weekly-questions/nov-18">
 						Check out the Weekly Question
 					</Link>
 				</div>
