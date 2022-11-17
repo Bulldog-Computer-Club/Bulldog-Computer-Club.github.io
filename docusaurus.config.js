@@ -61,11 +61,19 @@ module.exports = {
 			style: 'dark',
 			links: [
 				{
-					title: 'Resources',
+					title: 'Learn',
 					items: [
+						{
+							label: 'Python',
+							to: '/docs/python',
+						},
 						{
 							label: 'CCC',
 							to: '/docs/ccc/introduction',
+						},
+						{
+							label: 'Challenges',
+							to: '/docs/challenges',
 						},
 					],
 				},
@@ -73,11 +81,11 @@ module.exports = {
 					title: 'More',
 					items: [
 						{
-							label: 'GitHub Organization',
+							label: 'GitHub',
 							href: 'https://github.com/bulldog-computer-club',
 						},
 						{
-							label: 'Website Repository',
+							label: 'Website Source',
 							href: 'https://github.com/bulldog-computer-club/bulldog-computer-club.github.io',
 						},
 					],
