@@ -16,8 +16,8 @@ module.exports = {
 				docs: {
 					sidebarPath: require.resolve('./sidebars.js'),
 					editUrl: 'https://github.com/bulldog-computer-club/bulldog-computer-club.github.io/edit/main/',
-					remarkPlugins: [import('remark-math')],
-					rehypePlugins: [import('rehype-katex')],
+					remarkPlugins: [require('remark-math')],
+					rehypePlugins: [require('rehype-katex')],
 				},
 				blog: false,
 				theme: {
