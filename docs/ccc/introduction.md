@@ -1,6 +1,6 @@
 ---
 title: Introduction
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 The **CCC** topic is currently being organized by Joe and is purely online at the moment.

@@ -1,6 +1,6 @@
 ---
 title: Two-Pointers on Sorted Sequences
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 An introduction to the extremely useful _two-pointers_ technique.
