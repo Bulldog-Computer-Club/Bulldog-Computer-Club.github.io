@@ -3,216 +3,211 @@ title: Algorithmic Analysis
 sidebar_position: 6
 ---
 
-:::note
-
-If you already feel familiar with algorithmic analysis, skip to [the exercises](#exercises).
-
-:::
-
-Rather than diving into algorithmic analysis immediately, let's instead start with why it's useful for competitive programming.
-After all, it's rather easy to get into the mindset of considering algorithmic analysis as an obscure technique only useful for
-CS classes.
-
-Let's start with a simple example. You wrote a program for a CCC question, say J5. It runs nicely on the sample input, but when you
-submit it you notice that it TLEs; that is, it is too slow. What do you do? (In other words, how do you optimize your code in this scenario?)
-
-The answer lies in algorithmic analysis. Though it is not perfect, it gives you a good idea of which operations are relatively computationally
-expensive in addition to an idea of how many operations your program will take in the worst case. This can help you pinpoint the issue - is
-some part of your algorithm too slow, or is your general approach flawed?
-
-Now, you hopefully have an idea as to why algorithmic analysis is a useful tool. Let's actually get to what it is.
-
-# What is algorithmic analysis?
-
-Algorithmic analysis provides an estimate as to **how many resources a program will use to solve a problem as the input size scales**.
-The primary resources that we are concerned about are **time** and **space**.
-
-As, generally, space will not be a concern on the CCC, unless you are doing something crazy, we will focus on **time complexity** for this article.
+**Algorithm analysis** provides an estimate as to how much time or space your program will take to run.
+Knowing basic algorithm analysis can aid in quickly determining whether possible solution approaches are viable and in optimizing solutions that are too slow.
 
 ## Big O notation
 
-**Big O notation** is a notation used to describe how an algorithm scales with the input size.
-An informal definition of Big O notation is that it correlates the input size with the number of operations the program will take.
+**Big O notation** shows how an program scales with the input size.
+Informally, we say that a program has a time complexity of $\mathcal{O}(f(n))$ if it performs around $f(n)$ operations for an input of size $n$.
 
-It's written as $O(f(n))$ where $f$ is a function that describes the number of operations that the program would take for an input of size $n$.
+For example, if a program is $\mathcal{O}(n^2)$, then it performs around $n^2$ operations for an input of size $n$.
+Using this fact, we can predict that -- given an input of size $100$ -- the program in question will perform on the order of $100^2 = 10000$ operations.
 
-For example, $O(n^2)$ means that the program has quadratic time complexity. In other words, if the input size is $n$, the
-number of operations will be approximately $n^2$. For example, if the input size was $10$, then we would expect approximately $10^2 = 100$ operations.
+:::info Constant Time Complexity
 
-## Finding the Big O of a program
+A special time complexity is $\mathcal{O}(1)$, often referred to as _constant time._
+Programs that are $\mathcal{O}(1)$ take the same amount of time regardless of the input size.
 
-A way of finding the Big O of a program is to go through all the smaller parts of the program, find their Big O, and then add them up.
+:::
 
-- Most mathematical operations on numbers are $O(1)$ time (addition, subtraction, multiplication, etc.) For example, all of the following operations:
+:::warning
 
-  ```py
+It's important to keep in mind that Big O notation can only give you a general idea of how a program will perform _from a purely theoretical standpoint_; do not take it as gospel.
+In practice, there are a myriad of factors affecting the performance of programs that Big O does not take into account.
+
+For example, as we will see in the following section, Big O treats addition and division as having the same complexity,
+which is inaccurate -- on most processors, integer addition takes 1 cycle while division takes upward of 20.
+
+:::
+
+## Complexities of Common Programming Constructs
+
+In the previous section, we provided an abstract introduction to the Big O concept.
+Here, we give the complexity of various built-in operations and constructs, which will help us analyze more complex programs later on.
+
+### Mathematical Operations
+
+Mathematical operations are $\mathcal{O}(1)$. Below are some examples:
+
+```py
+1 + 1
+2 * 7
+n / 4 # where n is a variable
+```
+
+### I/O Operations
+
+Reading a line of input using `input` is $\mathcal{O}(1)$.
+Likewise, writing a line of output using `print` is $\mathcal{O}(1)$.
+
+### List Operations
+
+| Operation                             | Time Complexity         |
+| ------------------------------------- | ----------------------- |
+| `list[...]` (accessing by index)      | $\mathcal{O}(1)$        |
+| `list[...] = ...` (updating by index) | $\mathcal{O}(1)$        |
+| `list.append(...)`                    | $\mathcal{O}(1)$\*      |
+| `list.pop()`                          | $\mathcal{O}(n)$        |
+| `len(list)`                           | $\mathcal{O}(1)$        |
+| `list.sort()`                         | $\mathcal{O}(n \log n)$ |
+
+_\*Astute readers may note that this is not entirely accurate; appending to a dynamic array takes amortized constant time as opposed to constant time.
+While this is technically correct, we gloss over the distinction in this introductory article for simplicity.
+Interested readers may take a look at the [Wikipedia page on amortized analysis](https://en.wikipedia.org/wiki/Amortized_analysis)._
+
+### Dictionary Operations
+
+| Operation                              | Time Complexity  |
+| -------------------------------------- | ---------------- |
+| `dict[...]` (accessing by key)         | $\mathcal{O}(1)$ |
+| `dict[...] = ...` (adding new element) | $\mathcal{O}(1)$ |
+| `len(dict)`                            | $\mathcal{O}(1)$ |
+
+### Loops
+
+To determine the complexity of a loop, multiply the number of iterations by the complexity of the work performed in each one.
+Concretely, consider:
+
+```py
+for _ in range(n):
   1 + 1
-  2 * 7
-  n / 4
-  ```
-
-  ...are $O(1)$.
-
-- Built-in syntax and functions - you have to remember the big O of these.
-  For example, indexing into an array is $O(1)$, finding an element in a linked list is $O(n)$, and looking up a key in a hash table is expected $O(1)$.
-  Reading input is considered $O(1)$ as well.
-
-- Loops have a big O of `number of iterations * big O of each iteration`. For example:
-
-  ```py
-  for i in range(n):
-     1 + 1
-  ```
-
-  ...is $O(n)$, as there are $n$ iterations where $O(1)$ work is done each iteration yielding a total time complexity of $O(n * 1) = O(n)$.
-
-  You can apply this rule multiple times in the case of nested loops. For example:
-
-  ```py
-  for i in range(n):
-    for j in range(n):
-  	  1 + 1
-  ```
-
-  The outer loop runs $n$ times. In each iteration, the inner loop runs $n$ times. In each iteration of the inner loop, $O(1)$ work is being done.
-  Thus the big O of the inner loop is $O(n)$. The big O of the whole program is then $O(n * n) = O(n^2)$ as there are $n$ iterations where $O(n)$ work is being
-  done each iteration.
-
-These three rules, when put together, cover a wide range of programs.
-The primary exception is recursive functions -- none of the rules can be applied to calls of recursive functions (indirect or otherwise).
-
-### Combining Big-Os
-
-Originally, we stated that to obtain the big O of a program, you combine the big Os of its constituent parts.
-Unfortunately that is a bit of a simplification:
-
-**Question:** What is the Big-O of the following program?
-
-```py
-for i in range(n):
-	1 + 1
-for i in range(n):
-	1 + 1
-1 + 1
-for i in range(n * 2):
-	for j in range(n):
-		1 + 1
 ```
 
-Let's start with analyzing the time complexity of individual parts of this program. We will label it as follows:
+This code will loop $n$ times. In each iteration, one operation occurs, so the overall complexity is $\mathcal{O(n)}$.
+
+Nested loops are similar:
 
 ```py
-# 1)
-for i in range(n):
-	1 + 1
-# 2)
-for i in range(n):
-	1 + 1
-# 3)
-1 + 1
-# 4)
-for i in range(n * 2):
-	# 4a)
-	for j in range(n):
-		1 + 1
+for _ in range(n):
+  for _ in range(n):
+    1 + 1
 ```
 
-1\) is clearly $O(n)$, as is 2). Similarly, 3) is $O(1)$.
+The outer loop runs $n$ times. In each iteration of the outer loop, the inner loop iterates $n$ times, performing one operation in each.
+Hence, the overall complexity is $\mathcal{O}(n \cdot n) = \mathcal{O}(n^2)$.
 
-As for 4), the outer loop runs $2n$ times. The inner loop, 4a), runs $n$ times and does $O(n)$ work.
-Thus we have that 4) is $O(2n * n) = O(2n^2)$.
+### Sequences of Operations
 
-Summarizing, we have:
+Suppose we do not have a single mathematical operation or a single loop, but rather some combination of the two.
+For example, consider:
 
-1. $O(n)$
-2. $O(n)$
-3. $O(1)$
-4. $O(2n^2)$
+```py
+1 + 1
+for _ in range(n):
+  1 + 1
+for _ in range(2 * n):
+  1 + 1
+```
 
-If we add that up, we get $O(n + n + 1 + 2n^2) = O(2n^2 + 2n + 1)$.
+In such a case, we can split the program into smaller parts (which we know the complexity of), analyze them individually, and sum everything at the end.
 
-So is that the Big O of the program?
-The answer is... technically yes, $O(2n^2 + 2n + 1)$ is accurate, but in practice generally it is considered just $O(n^2)$.
+In particular, we know:
 
-Why? The reason is that **constants are discarded in Big-O notation.**
+- The first addition contributes $1$ operation;
+- The first loop contributes $n$ operations;
+- The second loop contributes $2n$ operations.
 
-### Discarding constants
+It follows that the overall time complexity is $\mathcal{O}(3n + 1)$.
 
-Generally speaking, constants and lower factors are omitted in Big-O notation. In $O(2n^2 + 2n + 1)$, $2n^2$ is the "biggest" term
-and thus is the only one that is shown. Moreover, the constant factor $2$ is removed, leaving $n^2$.
+:::note Discarding Constants
 
-The primary reasons for this are:
+In practice, we will often omit constant terms and lesser factors in Big O notation; that is, we would write $\mathcal{O}(n)$ instead of $\mathcal{O}(3n + 1)$.
 
-1. It simplifies the notation. $O(n^2)$ is much simpler to look at compared to $O(2n + 2n^2 + 1)$.
-2. It still gets the main idea across -- e.g. the algorithm is linear / quadratic / so on.
-3. As the input size grows, constants and lower factors become more and more irrelevant.
-   For example, in $n + 1$, if $n$ is very large (i.e. $10^6$), the difference between $10^6$ and $10^6 + 1$ is irrelevant.
+The reasons for this are twofold:
 
-## List of common Big Os
+- It conveys the same information using less space: both $\mathcal{O}(n)$ and $\mathcal{O}(3n + 1)$ tell us that our program runs in linear time with regard to the input size.
+- As the input size grows, constant terms and lesser factors become increasingly irrelevant.
 
-Listed from fastest to slowest.
+:::
 
-- **Constant time $O(1)$:** Most mathematical operations are considered $O(1)$ (addition, subtraction, multiplication, etc.), in addition to a handful of common operations such as
-  appending to lists, popping from the end of a list and indexing into a list.
+## Analyzing a Simple Program
 
-- **Logarithmic time $O(\log n)$:** Among other operations, programs that halve the input size each iteration are logarithmic time, such as binary search.
+Now, let us try to determine how many operations a simple program takes (and hence find its Big O.)
 
-  Logarithms grow fairly slowly: assuming that the base of the logarithm is $2$, here are some examples with various input sizes:
+```py
+n = int(input())
+total = 0
+for k in range(1, n + 1):
+  total += k
+print(total)
+```
 
-  - $n = 10$ => $log_2 10 \approx 3$ operations
-  - $n = 1000$ => $log_2 1000 \approx 10$ operations
-  - $n = 1,000,000$ => $log_2 1,000,000 \approx 20$ operations
+This program accepts one integer input, $n$, and outputs the sum of all integers from $1$ up to $n$.
 
-- **Linear time $O(n)$:** Arguably the most common time complexity, showing up basically everywhere: for example, a loop over a list is $O(n)$.
+For example, if we input $n = 2$, $1 + 2 = 3$ would be outputted.
+Further, if we consider the main loop in the program, as shown below,
 
-- **Linearithmic time $O(n \log n)$** Primarily shows up when sorting is involved, as most efficient sorting algorithms are $O(n \log n)$ (e.g. quicksort, mergesort, timsort).
+```py
+n = int(input())
+total = 0
+# highlight-start
+for k in range(1, n + 1):
+  total += k
+# highlight-end
+print(total)
+```
 
-- **Quadratic time $O(n^2)$:** Two nested loops (e.g. looping over all pairs in an array).
+we observe that $k$ will start at $1$ and go up to $3$, meaning that there will be a total of $3$ iterations.
 
-- **Exponential time $O(2^n)$:** Occurs when ealing with subsets -- the number of subsets of a set with cardinality $n$ is $2^n$.
+Now, consider what happens as we increase $n$, say to $100$.
+In that case, the output would be $1 + 2 + \dots + 100 = 5050$.
+Again, if we consider the main loop, we see that $k$ will start at $1$ and go up to $100$, resulting in a total of $100$ iterations.
 
-- **Factorial time $O(n!)$:** Occurs when dealing with permutations -- the number of permutations of a list of size $n$ is $n!$.
+More generally, if we input $n$, then the program will loop $n$ times. Each iteration corresponds to $1$ operation, and thus there are a total of $\approx n$ operations performed.
+Thus, we say that the program has a time complexity of $\mathcal{O}(n)$.
 
-## What time complexities will pass for certain inputs
+## Acceptable Complexities for Various Input Sizes
 
 While reading a problem, you can often predict what time complexity your program should have based off the problem constraints.
-For example, if you needed to do some operations on a list of size $n$ where $n$ could be up to a million, you can rule out anything above quadratic time.
-Similarly, if the input size is small (e.g. $n <= 10$), brute force (all subsets / permutations) should be the first thing that comes to mind.
+For example, if you needed to do some operations on a list of size $n$ where $n$ could be up to a million, you can rule out any solutions with a complexity exceeding $\mathcal{O}(n \log n)$.
+On the other hand, if the input size is small (e.g. $n <= 10$), brute force (all subsets / permutations) would suffice and should be the first thing that comes to mind.
 
-Below is a short table with different input sizes and possible time complexities. Note that this is not extremely exact -- treat it as a heuristic.
+Below is a table with different input sizes and acceptable time complexities.
 
-| $n$              | Upper bound on time complexities |
-| ---------------- | -------------------------------- |
-| $n <= 10$        | $O(n!)$                          |
-| $n <= 20$        | $O(2^n)$                         |
-| $n <= 400$       | $O(n^3)$                         |
-| $n <= 5000$      | $O(n^2)$                         |
-| $n <= 5 * 10^5$  | $O(n \log n)$                    |
-| $n <= 5 * 10^6$  | $O(n)$                           |
-| Other            | $O(\log n)$, $O(1)$              |
+| Bound on $n$          | Maximum acceptable time complexity      |
+| --------------------- | --------------------------------------- |
+| $n \le 10$            | $\mathcal{O}(n!)$                       |
+| $n \le 20$            | $\mathcal{O}(2^n)$                      |
+| $n \le 400$           | $\mathcal{O}(n^3)$                      |
+| $n \le 5000$          | $\mathcal{O}(n^2)$                      |
+| $n \le 5 \times 10^5$ | $\mathcal{O}(n \log n)$                 |
+| $n \le 5 \times 10^6$ | $\mathcal{O}(n)$                        |
+| Beyond                | $\mathcal{O}(\log n)$, $\mathcal{O}(1)$ |
 
 ## Exercises
 
 For each program, work out its time complexity.
-Feel free to look up time complexities of syntax/functions if needed (e.g. "what is the time complexity of taking a substring of a string?")
+If needed, look up time complexities of syntax/functions (e.g. "what is the time complexity of taking a substring of a string?")
 
 **Question 1**
 
 ```py
-# Input: one integer N.
 n = int(input())
 print(n + n)
 ```
 
+Provide your answer in terms of $n$.
+
 <details><summary>Solution</summary>
 <p>
 
-**Answer:** $O(1)$.
+**Answer:** $\mathcal{O}(1)$.
 
 **Explanation:**
-`input` is constant time, so the first line is $O(1)$.
-Adding two integers is also constant time, so the second line is also $O(1)$.
-$O(1 + 1) = O(2) = O(1)$ -- remember to discard constant factors.
+`input` is constant time, so the first line is $\mathcal{O}(1)$.
+Adding two integers is also constant time, so the second line is also $\mathcal{O}(1)$.
+$\mathcal{O}(1 + 1) = \mathcal{O}(2) = \mathcal{O}(1)$ -- remember to discard constant factors.
 
 </p>
 </details>
@@ -220,7 +215,6 @@ $O(1 + 1) = O(2) = O(1)$ -- remember to discard constant factors.
 **Question 2**
 
 ```py
-# Input: two integers N and M.
 n = int(input())
 m = int(input())
 counter = 0
@@ -230,15 +224,17 @@ for i in range(n):
 print(counter)
 ```
 
+Provide your answer in terms of $n$ and $m$.
+
 <details><summary>Solution</summary>
 <p>
 
-**Answer:** $O(nm)$.
+**Answer:** $\mathcal{O}(nm)$.
 
 **Explanation:**
-`input` is constant time, so the two lines are $O(1)$.
+`input` is constant time, so the first two lines are $\mathcal{O}(1)$.
 
-We now have a nested loop, where the outer loop goes from $0..n$ (which is $n$ iterations):
+The main construct of interest is the nested loop ranging from $0$ to $n$ ($n$ iterations):
 
 ```py
 for i in range(n):
@@ -246,15 +242,14 @@ for i in range(n):
     counter += 1
 ```
 
-If we examine the inner loop, we see that it goes from $0..m$ (which is $m$ iterations):
+Examining the inner loop, we see that it ranges from $0$ to $m$ ($m$ iterations):
 
 ```py
 for j in range(m):
   counter += 1
 ```
 
-Thus the overall time complexity of the loop is $O(n * m) = O(nm)$.
-As lower factors are discarded, $O(nm)$ is also the time complexity of the program.
+Thus the overall time complexity is $\mathcal{O}(n \times m) = \mathcal{O}(nm)$.
 
 </p>
 </details>
@@ -262,7 +257,6 @@ As lower factors are discarded, $O(nm)$ is also the time complexity of the progr
 **Question 3**
 
 ```py
-# Input: an integer N.
 n = int(input())
 while n > 0:
   for j in range(1000):
@@ -270,10 +264,12 @@ while n > 0:
   n //= 2
 ```
 
+Provide your answer in terms of $n$.
+
 <details><summary>Solution</summary>
 <p>
 
-**Answer:** $O(\log n)$.
+**Answer:** $\mathcal{O}(\log n)$.
 
 **Explanation:**
 Observe that the loop halves $n$ every iteration until it reaches $0$, which means that the number of iterations is $\approx \log_2 n$.
@@ -285,8 +281,7 @@ while n > 0:
   n //= 2
 ```
 
-The inner loop over `j` may look like it contributes to the time complexity, but since the number of iterations is constant (1000) it does not
-actually contribute to the time complexity.
+The inner loop over $j$ may look like it contributes to the time complexity, but since the number of iterations is constant it ends up discarded.
 
 </p>
 </details>
@@ -294,42 +289,45 @@ actually contribute to the time complexity.
 **Question 4**
 
 ```py
-# Input: a string of length N.
 s = input()
 for i in range(1, len(s) + 1):
-  print(s[:i]) # Note: s[:i] creates a new string from the first i characters of s
+  print(s[:i])
 ```
+
+Provide your answer in terms of $n = |s|$, the length of string `s`.
 
 <details><summary>Solution</summary>
 <p>
 
-**Answer:** $O(n^2)$.
+**Answer:** $\mathcal{O}(n^2)$.
 
 **Explanation:**
-Taking a substring of a larger string `s[:i]` takes $O(i)$ time. As `i` changes each iteration though, the time complexity of each iteration is not the same.
-However, if we consider the loop as a whole, we see that the time complexity of the first iteration is $O(1)$, the second iteration $O(2)$, the third $O(3)$ and the $n^{th}$ $O(n)$.
+Taking a substring of a larger string `s[:i]` takes $\mathcal{O}(i)$ time.
+As $i$ changes each iteration, so the time complexity of each iteration is not the same.
+However, considering we consider the loop as a whole, we see that the time complexity of the first iteration is $\mathcal{O}(1)$, the second iteration $\mathcal{O}(2)$, the third $\mathcal{O}(3)$ and the $n$-th $\mathcal{O}(n)$.
 
 Then, the total time complexity across all iteration is:
 
 $$
-O(1 + 2 + 3 + ... + n)
+\mathcal{O}(1 + 2 + 3 + ... + n)
 $$
 
 and by the formula for the sum of an arithmetic progression
 
 $$
-a_1 + a_2 + a_3 + a_4 + a_n = \frac{n(a_1 + a_n)}{2}
+a_1 + \dots + a_n = \frac{n(a_1 + a_n)}{2}
 $$
 
-we have that
+we have
 
 $$
-O(1 + 2 + 3 + ... + n) \\
-= O(\frac{n(n + 1)}{2}) \\
-= O(\frac{n^2 + n}{2}) \\
-= O(\frac{n^2}{2} + \frac{n}{2}) \\
-= O(\frac{n^2}{2}) \\
-= O(n^2)
+\begin{align*}
+  \mathcal{O}(1 + 2 + 3 + ... + n) &= \mathcal{O}(\frac{n(n + 1)}{2}) \\
+  &= \mathcal{O}(\frac{n^2 + n}{2}) \\
+  &= \mathcal{O}(\frac{n^2}{2} + \frac{n}{2}) \\
+  &= \mathcal{O}(\frac{n^2}{2}) \\
+  &= \mathcal{O}(n^2)
+\end{align*}
 $$
 
 </p>
@@ -338,7 +336,6 @@ $$
 **Question 5**
 
 ```py
-# Input: a list of numbers of length N and a target number T.
 nums = []
 n = int(input())
 for i in range(n):
@@ -347,19 +344,21 @@ for i in range(n):
 t = int(input())
 counter = 0
 for i in range(n):
-  for j in range(0, i):
+  for j in range(i):
     if nums[i] + nums[j] == t:
       counter += 1
 print(counter)
 ```
 
+Provide your answer in terms of $n$.
+
 <details><summary>Solution</summary>
 <p>
 
-**Answer:** $O(n^2)$.
+**Answer:** $\mathcal{O}(n^2)$.
 
 **Explanation:**
-The loop to read in `nums` requires $n$ iterations and is thus $O(n)$.
+The loop to read in `nums` requires $n$ iterations and is thus $\mathcal{O}(n)$.
 
 The main loop is very similar to the previous problem, and can be analyzed in the exact same way.
 
@@ -372,9 +371,7 @@ for i in range(n):
 The outer loop features $n$ iterations.
 In the first iteration, we see that the inner loop loops $0$ times; in the second, it loops $1$ time; in the third, $2$ times, and so on.
 
-By the exact same method presented for Question 4, we obtain that the loop is $O(n^2)$ overall.
-
-**Unrelated note:** This is the brute-force solution for the famous Two-Sum problem.
+By the same method presented for Question 4, we obtain that the loop is $\mathcal{O}(n^2)$ overall.
 
 </p>
 </details>
@@ -382,7 +379,6 @@ By the exact same method presented for Question 4, we obtain that the loop is $O
 **Question 6**
 
 ```py
-# Input: a list of numbers of length N.
 nums = []
 n = int(input())
 for i in range(n):
@@ -400,15 +396,17 @@ while i < len(nums):
   print(run_len)
 ```
 
+Provide your answer in terms of $n$.
+
 <details><summary>Solution</summary>
 <p>
 
-**Answer:** $O(n)$.
+**Answer:** $\mathcal{O}(n)$.
 
 **Explanation:**
-The loop to read in `nums` requires $n$ iterations and is thus $O(n)$.
+The loop to read in `nums` requires $n$ iterations and is thus $\mathcal{O}(n)$.
 
-Though there are two nested loops, we observe that they share the same condition `i < len(nums) => i < n`. This means that `i` can only be incremented `n` times before the loops break.
+Though there are two nested loops, we observe that they share the same condition `i < len(nums)`. This means that $i$ can only be incremented $n$ times before the loops break.
 Moreover, observe that in each iteration of the inner loop:
 
 ```py
@@ -417,7 +415,7 @@ while ...:
   run_len += 1
 ```
 
-`i` is incremented by `1`. As noted previously, only `n` increments can occur before the loops break; thus, the overall time complexity is $O(n)$.
+$i$ is incremented by $1$. As noted previously, only $n$ increments can occur before the loops break; thus, the overall time complexity is $\mathcal{O}(n)$.
 
 </p>
 </details>
@@ -425,23 +423,25 @@ while ...:
 **Question 7 (Bonus)**
 
 ```py
-# Input: an integer N.
 def fac(n):
   if n <= 1:
     return n
   return n * fac(n - 1)
+
 n = int(input())
 print(fac(n))
 ```
 
+Provide your answer in terms of $n$.
+
 <details><summary>Solution</summary>
 <p>
 
-**Answer:** $O(n)$.
+**Answer:** $\mathcal{O}(n)$.
 
 **Explanation:**
-Every time the recursive procedure `fac` executes, it calls itself with a decremented value of $n$. When $n$ reaches $1$ or less, the recursion stops.
-Thus `fac(n)` will result in $n$ recursive calls of itself, and as multiplication is constant time we obtain an overall time complexity of $O(n)$.
+Every time `fac` is called, it recurses with a decremented value of $n$. When $n$ reaches $1$ or less, the recursion stops.
+Thus `fac(n)` will result in $n$ recursive calls, and as multiplication is constant time we obtain an overall time complexity of $\mathcal{O}(n)$.
 
 </p>
 </details>
