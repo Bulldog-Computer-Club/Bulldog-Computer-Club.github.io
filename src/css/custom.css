@@ -6,6 +6,7 @@
 	--ifm-color-primary-light: #33925d;
 	--ifm-color-primary-lighter: #359962;
 	--ifm-color-primary-lightest: #3cad6e;
+	--docusaurus-highlighted-code-line-bg: rgb(0 0 0 / 10%);
 }
 
 [data-theme='dark'] {
@@ -16,8 +17,9 @@
 	--ifm-color-primary-light: #29d5b0;
 	--ifm-color-primary-lighter: #32d8b4;
 	--ifm-color-primary-lightest: #4fddbf;
+	--docusaurus-highlighted-code-line-bg: rgb(66 66 66 / 35%);
 }
-
+/* 
 .docusaurus-highlight-code-line {
 	background-color: rgba(0, 0, 0, 0.1);
 	display: block;
@@ -27,23 +29,7 @@
 
 html[data-theme='dark'] .docusaurus-highlight-code-line {
 	background-color: rgba(0, 0, 0, 0.3);
-}
-
-.prism-code {
-	counter-reset: line-number;
-}
-
-.prism-code .token-line::marker {
-	color: var(--ifm-color-gray-700);
-	content: counter(line-number);
-}
-
-.prism-code .token-line {
-	counter-increment: line-number;
-	display: list-item;
-	padding-left: var(--ifm-pre-padding);
-	margin-left: var(--ifm-global-spacing);
-}
+} */
 
 .header-github-link:hover {
 	opacity: 0.6;
