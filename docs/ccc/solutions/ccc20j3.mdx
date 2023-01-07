@@ -1,0 +1,136 @@
+---
+title: CCC '20 J3
+position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+**DMOJ Link:** https://dmoj.ca/problem/ccc20j3
+
+## Problem Interpretation
+
+We are given the coordinates of various points, and want to find the smallest rectangle containing all of them.
+
+:::caution
+
+Keep in mind that points on edges of the rectangle are not considered to be contained within it, per the following line of the problem statement:
+
+> Points on the frame are not considered inside the frame.
+
+:::
+
+## Solution Sketch
+
+First find the minimum and maximum $x$ and $y$ coordinates. Call them $x_{\text{min}}$, $x_{\text{max}}$, $y_{\text{min}}$ and $y_{\text{max}}$ respectively.
+
+In order to contain all the points given, our rectangle needs to satisfy two properties:
+
+- Include all x-coordinates from $x_{\text{min}}$ to $x_{\text{min}}$.
+- Include all y-coordinates from $y_{\text{min}}$ to $y_{\text{max}}$.
+
+Evidently, the smallest valid rectangle meeting these criteria has bottom-left corner $(x_{\text{min}}-1, x_{\text{max}}+1)$ and upper-right corner $(y_{\text{min}}+1, y_{\text{max}}+1)$.
+
+## Implementation
+
+:::tip
+
+If you are struggling with input/output, the [article on I/O](input-and-output) may be helpful.
+
+:::
+
+We first read in $n$, the number of points.
+
+Then, we initialize variables representing $x_{\text{min}}$, $x_{\text{max}}$, $y_{\text{min}}$ and $y_{\text{max}}$.
+As the problem constraints guarantee that all coordinates are between $0$ and $100$, we start minimum values at $100$ to ensure they will be overwritten once we process the first point.
+For similar reasons, we start maximum values at $0$.
+(Initializing the variables in this manner avoids needing to handle the first point separately.)
+
+Next, we read in the $n$ points and update $x_{\text{min}}$, $x_{\text{max}}$, $y_{\text{min}}$ and $y_{\text{max}}$ as needed.
+
+At the end, we output $x_{\text{min}}-1, x_{\text{max}}+1$ and $y_{\text{min}}+1, y_{\text{max}}+1$.
+
+<Tabs>
+<TabItem value="py" label="Python" default>
+
+```py
+n = int(input())
+min_x, max_x = 100, 0
+min_y, max_y = 100, 0
+for _ in range(n):
+	x, y = map(int, input().split(","))
+	min_x = min(min_x, x)
+	max_x = max(max_x, x)
+
+	min_y = min(min_y, y)
+	max_y = max(max_y, y)
+print(f"{min_x - 1},{min_y - 1}")
+print(f"{max_x + 1},{max_y + 1}")
+```
+
+</TabItem>
+
+<TabItem value="java" label="Java">
+
+```java
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		int n = Integer.parseInt(scanner.nextLine());
+
+		int minX = 100, maxX = 0;
+		int minY = 100, maxY = 0;
+		for (int i = 0; i < n; i++) {
+			String[] coords = scanner.nextLine().split(",");
+			int x = Integer.parseInt(coords[0]);
+			int y = Integer.parseInt(coords[1]);
+
+			minX = Math.min(minX, x);
+			maxX = Math.max(maxX, x);
+
+			minY = Math.min(minY, y);
+			maxY = Math.max(maxY, y);
+		}
+
+		System.out.println(Integer.toString(minX - 1) + "," + (minY - 1));
+		System.out.println(Integer.toString(maxX + 1) + "," + (maxY + 1));
+	}
+}
+```
+
+</TabItem>
+
+<TabItem value="cpp" label="C++">
+
+```cpp
+#include <algorithm>
+#include <iostream>
+
+int main() {
+	int n;
+	std::cin >> n;
+
+	int min_x = 100, max_x = 0;
+	int min_y = 100, max_y = 0;
+	for (int i = 0; i < n; i++) {
+		int x;
+		std::cin >> x;
+		std::cin.ignore(1); // discard ','
+		int y;
+		std::cin >> y;
+
+		min_x = std::min(min_x, x);
+		max_x = std::max(max_x, x);
+
+		min_y = std::min(min_y, y);
+		max_y = std::max(max_y, y);
+	}
+	std::cout << (min_x - 1) << ',' << (min_y - 1) << '\n';
+	std::cout << (max_x + 1) << ',' << (max_y + 1) << '\n';
+}
+```
+
+</TabItem>
+</Tabs>
