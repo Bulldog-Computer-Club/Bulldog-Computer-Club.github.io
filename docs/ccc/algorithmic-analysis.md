@@ -58,7 +58,7 @@ Likewise, writing a line of output using `print` is $\mathcal{O}(1)$.
 | `list[...]` (accessing by index)      | $\mathcal{O}(1)$        |
 | `list[...] = ...` (updating by index) | $\mathcal{O}(1)$        |
 | `list.append(...)`                    | $\mathcal{O}(1)$\*      |
-| `list.pop()`                          | $\mathcal{O}(n)$        |
+| `list.pop()`                          | $\mathcal{O}(1)$        |
 | `len(list)`                           | $\mathcal{O}(1)$        |
 | `list.sort()`                         | $\mathcal{O}(n \log n)$ |
 
