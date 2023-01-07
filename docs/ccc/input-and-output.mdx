@@ -1,0 +1,284 @@
+---
+title: Input and Output
+sidebar_position: 4
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Though there are many different types of problems on the CCC, all of them have one thing in common -- you read some data from standard input, solve the problem given the input, and output an answer to standard output.
+
+:::note
+
+We list only the most common and general approaches to reading input here for simplicity.
+On certain CCC problems, the input size may be large, in which case you should use [fast I/O](./fast-io).
+
+:::
+
+## Reading Input
+
+<Tabs>
+<TabItem value="py" label="Python" default>
+
+In Python, use the `input()` function to read one line from standard input.
+
+```py
+line = input()
+```
+
+If an integer/float value is desired, convert it manually.
+
+```py
+i = int(input())
+f = float(input())
+```
+
+Sometimes, input data will contain several items on a single line.
+For example, a problem might provide several integers separated by whitespace, like such:
+
+```
+1 2 3 4 5
+```
+
+In these cases, use the `str.split` method to break the string into its components.
+
+```py
+parts = input().split(" ")
+# parts = ["1", "2", "3", "4", "5"]
+```
+
+This may be written more succintly as
+
+```py
+parts = input().split() # splits around whitespace
+# parts = ["1", "2", "3", "4", "5"]
+```
+
+Note that `str.split` will return a list of strings, while we might wish to work with a list of integers instead.
+The `map` function can accomplish this:
+
+```py
+ints = map(int, input().split())
+# parts = [1, 2, 3, 4, 5]
+```
+
+</TabItem>
+
+<TabItem value="java" label="Java">
+
+In Java, use `java.util.Scanner` to read from standard input.
+
+Start by instantiating a `Scanner`:
+
+```java
+Scanner scanner = new Scanner(System.in);
+```
+
+Then, use one of the `next` methods to read values:
+
+```java
+int i = sc.nextInt();
+float f = sc.nextFloat();
+double d = sc.nextDouble();
+String line = sc.nextLine();
+```
+
+</TabItem>
+
+<TabItem value="cpp" label="C++">
+
+In C++, use `std::cin` to read from standard input.
+
+```cpp
+int a;
+long double ld;
+long long ll;
+cin >> a >> ld >> ll;
+```
+
+Note that using `>>` with a string, like such:
+
+```cpp
+string s;
+cin >> s;
+```
+
+...will only read up to the first whitespace character, which may be undesirable.
+That is, if the input was `hello world`, `s` would be `"hello"`, not `"hello world"`.
+
+To read a complete line of input, use `getline`.
+
+```cpp
+string s;
+getline(cin, s); // s is "hello world"
+```
+
+</TabItem>
+</Tabs>
+
+:::warning
+
+When solving problems, **do not** issue a prompt for input unless it is explicitly stated that you should do so in the problem statement.
+This is because the CCC grader will **treat your prompt as output and therefore mark it as incorrect**.
+
+For example, say we are solving a problem which takes a single input, the age.
+
+**Correct**
+
+```py
+age = int(input())
+# ...
+```
+
+**Incorrect**
+
+```py
+age = int(input("What is your age?"))
+
+# Also wrong:
+print("What is your age?")
+age = int(input())
+```
+
+:::
+
+## Writing Output
+
+<Tabs>
+<TabItem value="py" label="Python" default>
+
+In Python, use the `print` function to write to standard output:
+
+```py
+print("Hello world") # Hello world
+
+name = "Joe"
+print("Hello", name) # Hello Joe
+
+print(1, 2, 3) # 1 2 3
+```
+
+`print` will add a newline to the end by default. To avoid this, provide a different argument to the `end` parameter:
+
+```py
+print("Hello world", end='') # No newline
+```
+
+To print a sequence of items, map into a sequence of strings and then use `str.join`:
+
+```py
+names = ["Vincent", "Andrei", "Joe"]
+print(" ".join(names)) # Vincent Andrei Joe
+
+xs = [1, 2, 3]
+print(" ".join(map(str, xs))) # 1 2 3
+```
+
+</TabItem>
+
+<TabItem value="java" label="Java">
+
+In Java, use `System.out` to write to standard output.
+
+In particular, to write to standard output with a trailing newline, use `System.out.println`.
+If a newline is undesirable, use `System.out.print`.
+
+```java
+System.out.println("hello world!"); // hello world!
+System.out.print(1); // 1, without a trailing newline
+```
+
+To print a sequence of items, map it into a sequence of strings and then use `String.join`:
+
+```java
+String[] names = {"Vincent", "Andrei", "Joe"};
+System.out.println(String.join(", ", names)); // Vincent, Andrei, Joe
+```
+
+</TabItem>
+
+<TabItem value="cpp" label="C++">
+
+In C++, use `std::cout` to write to standard output.
+
+```cpp
+cout << "Hello world" << '\n';
+```
+
+C++ will not add a trailing newline automatically; you will need to output it yourself if needed.
+
+:::tip Outputting Newlines
+
+As a general rule, prefer to use `'\n'` instead of the `std::endl` I/O manipulator.
+This has to do with performance: `endl` flushes the stream which can slow down your program significantly if the output is large.
+Other than that, there is no difference between `'\n'` and `std::endl`.
+
+:::
+
+There are a number of ways to output a vector using standard algorithms, but the easiest way is to just use a loop.
+
+```cpp
+vector<int> xs{1, 2, 3, 4};
+for (int i = 0; i < xs.size(); i++) {
+	if (i > 0) cout << ' ';
+	cout << xs[i];
+}
+cout << '\n';
+```
+
+:::danger Floating-Point Values
+
+When outputting floating point values, C++ may choose to switch to scientific notation:
+
+```cpp
+double d = 1'000'000'000;
+cout << d << '\n'; // 1e+09
+```
+
+This is undesirable for the CCC, as most problems expect floating point values to be outputted using fixed point notation.
+That is, the above value should be outputted as `1000000000`.
+Thus, your otherwise correct solution might be marked incorrect!
+
+To prevent this issue, use the `fixed` I/O manipulator:
+
+```cpp
+double d = 1'000'000'000;
+cout << fixed << d << '\n'; // 1000000000
+```
+
+:::
+
+</TabItem>
+</Tabs>
+
+### Exact Output
+
+Can you spot the difference between these two outputs?
+
+<!-- prettier-ignore -->
+```
+1 2 3 
+```
+
+```
+1 2 3
+```
+
+<details><summary>Click to reveal</summary>
+<p>
+
+The first output has a trailing space after the `3`.
+
+</p>
+</details>
+
+**Unless otherwise specified, output must be exact!**
+
+That is, outputting the first text instead of the second in the example given above would be marked incorrect.
+No matter how miniscule, unless otherwise noted, any difference between your output and the expected output results in your solution being marked incorrect.
+
+Make sure your output matches the requirements exactly. Some things to check for:
+
+- Are you outputting periods where you're not supposed to (or vice versa)?
+- Are you outputting strings in the wrong case (`Yes` instead of `yes`)?
+- Are you outputting an extra newline somewhere?
