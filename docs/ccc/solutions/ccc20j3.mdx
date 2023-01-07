@@ -29,7 +29,7 @@ In order to contain all the points given, our rectangle needs to satisfy two pro
 - Include all x-coordinates from $x_{\text{min}}$ to $x_{\text{min}}$.
 - Include all y-coordinates from $y_{\text{min}}$ to $y_{\text{max}}$.
 
-Evidently, the smallest valid rectangle meeting these criteria has bottom-left corner $(x_{\text{min}}-1, x_{\text{max}}+1)$ and upper-right corner $(y_{\text{min}}+1, y_{\text{max}}+1)$.
+Evidently, the smallest valid rectangle meeting these criteria has bottom-left corner $(x_{\text{min}}-1, x_{\text{max}}-1)$ and upper-right corner $(y_{\text{min}}+1, y_{\text{max}}+1)$.
 
 ## Implementation
 
@@ -48,7 +48,7 @@ For similar reasons, we start maximum values at $0$.
 
 Next, we read in the $n$ points and update $x_{\text{min}}$, $x_{\text{max}}$, $y_{\text{min}}$ and $y_{\text{max}}$ as needed.
 
-At the end, we output $x_{\text{min}}-1, x_{\text{max}}+1$ and $y_{\text{min}}+1, y_{\text{max}}+1$.
+At the end, we output $x_{\text{min}}-1, x_{\text{max}}-1$ and $y_{\text{min}}+1, y_{\text{max}}+1$.
 
 <Tabs>
 <TabItem value="py" label="Python" default>
