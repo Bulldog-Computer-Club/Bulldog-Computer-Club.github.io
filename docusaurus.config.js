@@ -73,7 +73,7 @@ module.exports = {
 						},
 						{
 							label: 'Weekly Challenges',
-							to: '/docs/weekly-challenges/introduction',
+							to: '/docs/weekly-challenges/childish-calendar-condition',
 						},
 					],
 				},
