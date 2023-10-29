@@ -1,0 +1,96 @@
+---
+title: Fast I/O
+sidebar_position: 2
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Some CCC problems have large amounts of input (tens of thousands of lines),
+which can cause an otherwise correct and efficient solution to time out while
+reading the input.
+
+To mitigate this issue, fast I/O methods can be used.
+
+<Tabs groupId="prog-langs">
+<TabItem value="py" label="Python" default>
+
+Instead of using `input()`, read directly from `sys.stdin`. A hacky way to do
+this is to simply redefine `input` as `sys.stdin.readline` at the beginning of
+your program:
+
+```py
+input = sys.stdin.readline
+# Use input() as normal
+```
+
+Note, however, that the result of `sys.stdin.readline` will contain trailing
+newlines, which may need to be stripped out manually.
+
+</TabItem>
+
+<TabItem value="java" label="Java">
+
+`java.util.Scanner` has a number of useful features such as splitting using
+regular expressions instead of whitespace and proper handling of non-ASCII
+digits; however, these incur unnecessary overhead in most competitive
+programming scenarios. For higher performance, a `java.io.BufferedReader` can be
+used in combination with a `java.util.StringTokenizer`.
+
+```java
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+// Read an integer on one line
+int i = Integer.parseInt(br.readLine());
+
+// Read several integers on the same line
+StringTokenizer st = new StringTokenizer(br.readLine());
+while (st.hasMoreTokens()) {
+	int i = Integer.parseInt(st.nextToken());
+}
+```
+
+</TabItem>
+
+<TabItem value="cpp" label="C++">
+
+One option is to use the C standard library functions `scanf` and `printf` instead
+of the standard `std::cin` and `std::cout` streams; however, `scanf` and `printf`
+can be somewhat unwieldy and error-prone.
+
+On the other hand, if you want to keep using `std::cin` and `std::cout`, there are
+two things you can do to improve their performance:
+
+1.  _Unsync the C and C++ standard streams._ By default, the C and C++ standard
+    streams are synced; this allows both to be used in the same program predictably.
+    You can disable syncing by calling `std::ios_base::sync_with_stdio(false)`. After
+    doing this, you should refrain from using `scanf`/`printf` — instead, stick to
+    `std::cin` and `std::cout`.
+
+2.  _Untie `std::cin`._ By default, the standard input and output streams are tied,
+    meaning any operations on one will automatically flush the other. This ensures
+    sequences of operations like
+
+    ```cpp
+    int n{};
+    std::cout << "What's your favorite number? ";
+    std::cin >> n;
+    ```
+
+    behave as expected. If `std::cin` and `std::cout` are not tied, executing the above
+    program may result in the prompt `What's your favorite number?` being output only _after_
+    the user enters a number, as the output is buffered. If this is not an issue — as is the
+    case in most CCC problems — `std::cin` may be untied via `std::cin.tie(nullptr)`.
+
+In brief, to speed up `std::cin` and `std::cout`, add the following lines at the
+beginning of your code:
+
+```cpp
+std::ios_base::sync_with_stdio(false);
+std::cin.tie(nullptr);
+```
+
+Then, use `std::cin` and `std::cout` as usual.
+
+</TabItem>
+</Tabs>
