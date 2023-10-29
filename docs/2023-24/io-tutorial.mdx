@@ -1,0 +1,277 @@
+---
+title: Input/Output Tutorial
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+In our first meeting, we introduced you to the format of the CCC — given a
+problem, you are tasked with writing a program that solves it for some input. We
+then looked at some past problems and worked through them by hand.
+
+Now, let's see how to convert the process you used to solve a problem with pen
+and paper into a program you can submit on the CCC.
+
+## CCC Input/Output Format
+
+One rather intriguing feature of the CCC is that **your solutions are autograded
+in real time**. That is, you can submit a solution to the CCC grader and a
+couple seconds later you can see the score it received (i.e., whether your
+program worked.) Further, if your solution turns out to be incorrect, you can
+edit it and submit again, to a maximum of fifty attempts.
+
+To facilitate autograding, however, the CCC expects your program to accept input
+and produce output in a specific way. In particular, your program should read
+from standard input (stdin) and output to standard output (stdout.)
+Colloquially, **your program needs to take input from the console and print
+output to the console as well.**
+
+The way to do this will differ depending on the language you are using and what
+form the input takes (is it a number? a string? multiple numbers? etc.) Sample
+code in Python, Java, and C++ follows.
+
+## Introductory Example — CCC '20 J1
+
+The most common kind of input in the CCC is numerical — you are given some
+numbers as input and are to determine the corresponding output. For instance,
+consider [CCC '20 J1 — Dog Treats](https://dmoj.ca/problem/ccc20j1). The premise
+of this problem is that you have a dog whose happiness depends on the number of
+small, medium, and large treats he receives in a day; you are tasked with
+determining whether the dog is happy or sad.
+
+Your program should, therefore, read three numbers from the console,
+representing the amount of treats of each type. More precisely, the input
+specification reads:
+
+> There are three lines of input. Each line contains a non-negative integer less
+> than $10$. The first line contains the number of small treats, $S$, the second
+> line contains the number of medium treats, $M$, and the third line contains
+> the number of large treats, $L$, that Barley receives in a day.
+
+Worked solutions in Python, Java, and C++ are provided below.
+
+<Tabs groupId="prog-langs">
+
+<TabItem value="py" label="Python">
+
+**In Python, use the `input` function to get one line of input from the console;
+use `print` for output.** Note, however, that since `input` returns a string, we will
+need to convert it to an integer ourselves using the `int` constructor like such:
+
+```py
+small_treats = int(input())
+medium_treats = int(input())
+large_treats = int(input())
+```
+
+From there, we can finish solving the problem using the formula given and a
+conditional (`if`) construct.
+
+```py {5-9}
+small_treats = int(input())
+medium_treats = int(input())
+large_treats = int(input())
+
+happiness_score = 1 * small_treats + 2 * medium_treats + 3 * large_treats
+if happiness_score >= 10:
+    print("happy")
+else:
+    print("sad")
+```
+
+</TabItem>
+
+<TabItem value="java" label="Java">
+
+**In Java, use `java.util.Scanner` to read input from the console; use
+`System.out.println` for output.** In this case, your input-reading logic might
+look like:
+
+```java
+// Assuming java.util.Scanner is imported...
+Scanner scanner = new Scanner(System.in);
+int smallTreats = scanner.nextInt();
+int mediumTreats = scanner.nextInt();
+int largeTreats = scanner.nextInt();
+```
+
+From there, we can finish solving the problem using the formula given and a
+conditional construct.
+
+```java {6-8}
+Scanner scanner = new Scanner(System.in);
+int smallTreats = scanner.nextInt();
+int mediumTreats = scanner.nextInt();
+int largeTreats = scanner.nextInt();
+
+int happinessScore = 1 * smallTreats + 2 * mediumTreats + 3 * largeTreats;
+System.out.println(happinessScore >= 10 ? "happy" : "sad");
+```
+
+</TabItem>
+
+<TabItem value="cpp" label="C++">
+
+**In C++, use `std::cin` to read input from the console; use `std::cout` for output.**
+In this case, your input-reading logic might look like:
+
+```cpp
+// Assuming std::cin and std::cout are in scope...
+int small_treats{}, medium_treats{}, large_treats{};
+std::cin >> small_treats >> medium_treats >> large_treats;
+```
+
+From there, we can finish solving the problem using the formula given and a
+conditional construct.
+
+```cpp {4-5}
+int small_treats{}, medium_treats{}, large_treats{};
+std::cin >> small_treats >> medium_treats >> large_treats;
+
+int happiness_score = 1 * small_treats + 2 * medium_treats + 3 * large_treats;
+std::cout << (happiness_score >= 10 ? "happy" : "sad") << '\n';
+```
+
+</TabItem>
+
+</Tabs>
+
+### Suggested Practice
+
+:::info Practice Problems
+
+Now that you know how to take numerical input, try solving some of the following
+problems (arranged in roughly increasing difficulty):
+
+- [CCC '21 J1 — Boiling Water](https://dmoj.ca/problem/ccc21j1)
+- [CCC '19 J1 — Winning Score](https://dmoj.ca/problem/ccc19j1)
+- [CCC '15 J1 — Special Day](https://dmoj.ca/problem/ccc15j1)
+- [CCC '17 J2 — Shifty Sum](https://dmoj.ca/problem/ccc17j2)
+- [CCC '20 J2 — Epidemiology](https://dmoj.ca/problem/ccc20j2)
+- [CCC '17 J3 — Exactly Electrical](https://dmoj.ca/problem/ccc17j3)
+
+:::
+
+## Reading a Variable Number of Inputs — CCC '22 J2
+
+Sometimes the amount of input for a problem will not be fixed. To understand
+what is meant by this, consider [CCC '22 J2 — Fergusonball
+Ratings](https://dmoj.ca/problem/ccc22j2). The premise of this problem is that
+you have some information about all the players in a sports team; you are tasked
+with finding the star players. However, the number of players may vary from case
+to case; the input specification reads:
+
+> The first line of input consists of a positive integer $N$ representing the
+> total number of players on the team. This is followed by a pair of consecutive
+> lines for each player. The first line in a pair is the number of points that
+> the player scored. The second line in a pair is the number of fouls that the
+> player committed. Both the number of points and the number of fouls, are
+> non-negative integers.
+
+To account for this, your program should therefore read input in a loop,
+stopping only after you have gathered information about all players on the team.
+Sample code in Python, Java, and C++ is provided below.
+
+<Tabs groupId="prog-langs">
+
+<TabItem value="py" label="Python">
+
+First, read the number of players on the team $N$; this will determine how many
+times we need to loop.
+
+```py
+num_players = int(input())
+```
+
+Now, for each player, read the number of points they scored and the number of fouls committed
+using a loop:
+
+```py {3-5}
+num_players = int(input())
+
+for _ in range(num_players):
+    points_scored = int(input())
+    foul_count = int(input())
+```
+
+Your turn! **Try to complete the solution above.**
+
+</TabItem>
+
+<TabItem value="java" label="Java">
+
+First, read the number of players on the team $N$; this will determine how many
+times we need to loop.
+
+```java
+Scanner scanner = new Scanner(System.in);
+int playerCount = scanner.nextInt();
+```
+
+Now, for each player, read the number of points they scored and the number of fouls committed
+using a loop:
+
+```java {4-7}
+Scaner scanner = new Scanner(System.in);
+int playerCount = scanner.nextInt();
+
+for (int i = 0; i < playerCount; i++) {
+    int pointsScored = scanner.nextInt();
+    int foulCount = scanner.nextInt();
+}
+```
+
+Your turn! **Try to complete the solution above.**
+
+</TabItem>
+
+<TabItem value="cpp" label="C++">
+
+First, read the number of players on the team $N$; this will determine how many
+times we need to loop.
+
+```cpp
+int player_count{};
+std::cin >> player_count;
+```
+
+Now, for each player, read the number of points they scored and the number of fouls committed
+using a loop:
+
+```cpp {4-7}
+int player_count{};
+std::cin >> player_count;
+
+for (int i = 0; i < player_count; i++) {
+    int points_scored{}, foul_count{};
+    std::cin >> points_scored >> foul_count;
+}
+```
+
+Your turn! **Try to complete the solution above.**
+
+</TabItem>
+
+</Tabs>
+
+### Suggested Practice
+
+:::info Practice Problems
+
+Now that you know how to take input in a loop, try solving some of the following
+problems (arranged in roughly increasing difficulty):
+
+- [CCC '21 J2 — Silent Auction](https://dmoj.ca/problem/ccc21j2)
+- [CCC '20 J3 — Art](https://dmoj.ca/problem/ccc20j3)
+- [CCC '19 J2 — Time to Decompress](https://dmoj.ca/problem/ccc19j2)
+- [CCC '19 J3 — Cold Compress](https://dmoj.ca/problem/ccc19j3)
+- [CCC '13 S2 — Bridge Transport](https://dmoj.ca/problem/ccc13s2)
+
+:::
+
+---
+
+Great job, you've reached this end of this tutorial! Here's a challenge problem
+to try if you're done all the suggested practice above: [CCC '21 S1 — Crazy
+Fencing](https://dmoj.ca/problem/ccc21s1).
