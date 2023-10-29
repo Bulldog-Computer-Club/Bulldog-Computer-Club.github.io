@@ -1,6 +1,6 @@
 ---
-title: Algorithmic Analysis
-sidebar_position: 6
+title: Algorithm Analysis
+sidebar_position: 1
 ---
 
 **Algorithm analysis** provides an estimate as to how much time or space your program will take to run.
@@ -12,7 +12,7 @@ Knowing basic algorithm analysis can aid in quickly determining whether possible
 Informally, we say that a program has a time complexity of $\mathcal{O}(f(n))$ if it performs around $f(n)$ operations for an input of size $n$.
 
 For example, if a program is $\mathcal{O}(n^2)$, then it performs around $n^2$ operations for an input of size $n$.
-Using this fact, we can predict that -- given an input of size $100$ -- the program in question will perform on the order of $100^2 = 10000$ operations.
+Using this fact, we can predict that — given an input of size $100$ — the program in question will perform on the order of $100^2 = 10000$ operations.
 
 :::info Constant Time Complexity
 
@@ -27,7 +27,7 @@ It's important to keep in mind that Big O notation can only give you a general i
 In practice, there are a myriad of factors affecting the performance of programs that Big O does not take into account.
 
 For example, as we will see in the following section, Big O treats addition and division as having the same complexity,
-which is inaccurate -- on most processors, integer addition takes 1 cycle while division takes upward of 20.
+which is inaccurate — on most processors, integer addition takes 1 cycle while division takes upward of 20.
 
 :::
 
@@ -207,7 +207,7 @@ Provide your answer in terms of $n$.
 **Explanation:**
 `input` is constant time, so the first line is $\mathcal{O}(1)$.
 Adding two integers is also constant time, so the second line is also $\mathcal{O}(1)$.
-$\mathcal{O}(1 + 1) = \mathcal{O}(2) = \mathcal{O}(1)$ -- remember to discard constant factors.
+$\mathcal{O}(1 + 1) = \mathcal{O}(2) = \mathcal{O}(1)$ — remember to discard constant factors.
 
 </p>
 </details>
