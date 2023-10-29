@@ -6,114 +6,72 @@ const { themes } = require('prism-react-renderer');
 /** @returns {Promise<import('@docusaurus/types').Config>} */
 async function createConfig() {
 	return {
-	title: 'Bulldog Computer Club',
-	tagline: 'The premier club for everything related to computer science at Churchill',
-	url: 'https://bulldog-computer-club.github.io',
-	baseUrl: '/',
-	onBrokenLinks: 'throw',
-	onBrokenMarkdownLinks: 'warn',
-	favicon: 'img/favicon.ico',
-	organizationName: 'bulldog-computer-club',
-	projectName: 'bulldog-computer-club.github.io',
-	trailingSlash: false,
-	presets: [
-		[
-			'@docusaurus/preset-classic',
-			{
-				docs: {
-					sidebarPath: require.resolve('./sidebars.js'),
-					editUrl: 'https://github.com/bulldog-computer-club/bulldog-computer-club.github.io/edit/main/',
+		title: 'Bulldog Computer Club',
+		tagline: 'The premier club for everything related to computer science at Churchill',
+		url: 'https://bulldog-computer-club.github.io',
+		baseUrl: '/',
+		onBrokenLinks: 'throw',
+		onBrokenMarkdownLinks: 'warn',
+		favicon: 'img/favicon.ico',
+		organizationName: 'bulldog-computer-club',
+		projectName: 'bulldog-computer-club.github.io',
+		trailingSlash: false,
+		presets: [
+			[
+				'@docusaurus/preset-classic',
+				{
+					docs: {
+						sidebarPath: require.resolve('./sidebars.js'),
+						editUrl: 'https://github.com/bulldog-computer-club/bulldog-computer-club.github.io/edit/main/',
 						remarkPlugins: [math],
 						rehypePlugins: [katex],
+					},
+					blog: false,
+					theme: {
+						customCss: require.resolve('./src/css/custom.css'),
+					},
 				},
-				blog: false,
-				theme: {
-					customCss: require.resolve('./src/css/custom.css'),
-				},
-			},
+			],
 		],
-	],
-	themeConfig: {
-		colorMode: {
-			defaultMode: 'dark',
-			respectPrefersColorScheme: true,
-		},
-		navbar: {
-			title: 'Bulldog Computer Club',
-			logo: {
-				alt: 'Bulldog Computer Club Logo',
-				src: 'img/logo.svg',
+		themeConfig: {
+			colorMode: {
+				defaultMode: 'dark',
+				respectPrefersColorScheme: true,
 			},
-			items: [
-				{
-					type: 'doc',
-					docId: 'introduction',
-					position: 'left',
-					label: 'Introduction',
+			navbar: {
+				title: 'Bulldog Computer Club',
+				logo: {
+					alt: 'Bulldog Computer Club Logo',
+					src: 'img/logo.svg',
 				},
-				{
-					type: 'doc',
-					docId: 'ccc/introduction',
-					position: 'left',
-					label: 'CCC',
-				},
-				{
-					href: 'https://github.com/bulldog-computer-club/',
-					className: 'header-github-link',
-					position: 'right',
-				},
-			],
-		},
-		footer: {
-			style: 'dark',
-			links: [
-				{
-					title: 'Learn',
-					items: [
-						{
-							label: 'Python',
-							to: '/docs/python/introduction',
-						},
-						{
-							label: 'CCC',
-							to: '/docs/ccc/introduction',
-						},
-						{
-							label: 'Weekly Challenges',
-							to: '/docs/weekly-challenges/childish-calendar-condition',
-						},
-					],
-				},
-				{
-					title: 'More',
-					items: [
-						{
-							label: 'GitHub',
-							href: 'https://github.com/bulldog-computer-club',
-						},
-						{
-							label: 'Website Source',
-							href: 'https://github.com/bulldog-computer-club/bulldog-computer-club.github.io',
-						},
-					],
-				},
-			],
-			copyright: `Copyright © ${new Date().getFullYear()} Bulldog Computer Club.`,
-		},
-		prism: {
+				items: [
+					{
+						type: 'doc',
+						docId: '2023-24/welcome',
+						position: 'left',
+						label: '2023-24 Guides',
+					},
+					{
+						href: 'https://github.com/bulldog-computer-club/',
+						className: 'header-github-link',
+						position: 'right',
+					},
+				],
+			},
+			prism: {
 				darkTheme: themes.vsDark,
 				theme: themes.vsLight,
-			additionalLanguages: ['java'],
+				additionalLanguages: ['java'],
+			},
 		},
-	},
-	stylesheets: [
-		{
-			href: 'https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css',
-			integrity: 'sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc',
-			crossorigin: 'anonymous',
-		},
-	],
-};
+		stylesheets: [
+			{
+				href: 'https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css',
+				integrity: 'sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc',
+				crossorigin: 'anonymous',
+			},
+		],
+	};
 }
 
 module.exports = createConfig;
