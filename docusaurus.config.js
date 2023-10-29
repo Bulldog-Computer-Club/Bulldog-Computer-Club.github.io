@@ -1,4 +1,11 @@
-module.exports = {
+// @ts-check
+const math = require('remark-math');
+const katex = require('rehype-katex');
+const { themes } = require('prism-react-renderer');
+
+/** @returns {Promise<import('@docusaurus/types').Config>} */
+async function createConfig() {
+	return {
 	title: 'Bulldog Computer Club',
 	tagline: 'The premier club for everything related to computer science at Churchill',
 	url: 'https://bulldog-computer-club.github.io',
@@ -16,8 +23,8 @@ module.exports = {
 				docs: {
 					sidebarPath: require.resolve('./sidebars.js'),
 					editUrl: 'https://github.com/bulldog-computer-club/bulldog-computer-club.github.io/edit/main/',
-					remarkPlugins: [require('remark-math')],
-					rehypePlugins: [require('rehype-katex')],
+						remarkPlugins: [math],
+						rehypePlugins: [katex],
 				},
 				blog: false,
 				theme: {
@@ -94,8 +101,8 @@ module.exports = {
 			copyright: `Copyright © ${new Date().getFullYear()} Bulldog Computer Club.`,
 		},
 		prism: {
-			darkTheme: require('prism-react-renderer/themes/vsDark'),
-			theme: require('prism-react-renderer/themes/vsLight'),
+				darkTheme: themes.vsDark,
+				theme: themes.vsLight,
 			additionalLanguages: ['java'],
 		},
 	},
@@ -107,3 +114,6 @@ module.exports = {
 		},
 	],
 };
+}
+
+module.exports = createConfig;
